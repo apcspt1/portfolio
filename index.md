@@ -5,7 +5,7 @@ hide: true
 show_reading_time: false
 ---
 
-Hi! My name is [Your Full Name]
+Hi! We are in AP CSP Trimester 1, and our team is Rashi, Aashni, and Kelervia.
 
 ### Development Environment
 
