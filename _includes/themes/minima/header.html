@@ -23,6 +23,18 @@
                     {%- for path in site.minima.nav_pages -%}
                     {%- assign my_page = site.pages | where: "path", path | first -%}
                     {%- if my_page.title -%}
+                    {%- if path == "navigation/community.md" and site.data.navigation.community -%}
+                    <div class="nav-dropdown">
+                        <a class="page-link nav-dropdown__link" href="{{ my_page.url | relative_url }}" aria-haspopup="true">
+                            {{ my_page.title | escape }}
+                        </a>
+                        <div class="nav-dropdown__menu" aria-label="{{ my_page.title | escape }} pages">
+                            {%- for child in site.data.navigation.community -%}
+                            <a class="page-link nav-dropdown__item" href="{{ child.url | relative_url }}">{{ child.title | escape }}</a>
+                            {%- endfor -%}
+                        </div>
+                    </div>
+                    {%- else -%}
                     <a class="page-link" href="{{ my_page.url | relative_url }}">
                         {%- if my_page.course -%}
                             {{ my_page.course | upcase | escape }}
@@ -30,6 +42,7 @@
                             {{ my_page.title | escape }}
                         {%- endif -%}
                     </a>
+                    {%- endif -%}
                     {%- endif -%}
                     {%- endfor -%}
                     <a id="loginArea" class="page-link" href="{{ site.baseurl }}/login">Login</a>

@@ -104,11 +104,16 @@ plugins:
 #   hide_site_feed_link: false
 
 minima:
-  skin: dark
+  skin: classic
   social_links:
     - { platform: github, user_url: "https://github.com/open-coding-society" }
     - { platform: x, user_url: "https://x.com/Open_Coding" }
     - { platform: youtube, user_url: "https://www.youtube.com/@OpenCodingSociety" } 
   nav_pages:
-    - navigation/search.md
+    - navigation/home.md
     - navigation/about.md
+    - navigation/community.md
+    - navigation/resources.md 
+    - navigation/login.md
+
+

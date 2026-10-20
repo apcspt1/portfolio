@@ -21,6 +21,7 @@
     display: flex !important;
     position: static;
     flex-direction: row;
+    align-items: center;
     background: none;
     box-shadow: none;
     width: auto;
@@ -36,4 +37,57 @@
   height: 40px;
   vertical-align: middle;
   margin-right: 10px;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown__menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 12rem;
+  padding: 0.4rem 0;
+  background: var(--navbar-surface, #fff);
+  border: 1px solid var(--navbar-border, #ddd);
+  border-radius: 0.35rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+}
+
+.nav-dropdown:hover .nav-dropdown__menu,
+.nav-dropdown:focus-within .nav-dropdown__menu {
+  display: block;
+}
+
+.nav-dropdown__menu .nav-dropdown__item {
+  display: block;
+  margin: 0;
+  padding: 0.55rem 1rem;
+  white-space: nowrap;
+}
+
+.nav-dropdown__menu .nav-dropdown__item:hover,
+.nav-dropdown__menu .nav-dropdown__item:focus {
+  background: rgba(127, 127, 127, 0.12);
+}
+
+@media (max-width: 599px) {
+  .nav-dropdown__menu {
+    display: block;
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 1rem;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .nav-dropdown__menu .nav-dropdown__item {
+    padding: 0.45rem 0.75rem;
+  }
 }

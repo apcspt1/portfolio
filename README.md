@@ -273,7 +273,9 @@ All pages can be searched for using the built-in search bar. This search bar wil
 
 ### Navigation Bar
 
-To add pages to the top navigation bar use _config.yml to order and determine which menus you want and how to order them.  Review the_config.yml in this project for an example.
+The top navigation is configured by `minima.nav_pages` in `_config.yml`; the order of the listed page paths is the order shown in the bar. The page's front-matter `title` is used for its navigation label.
+
+Community Hub has a dropdown configured in `_data/navigation.yml`. Its submenu links point to Markdown pages under `navigation/community/`. To add another submenu item, add a title and URL to that data file and create the matching page with Jekyll front matter, including a `title`, `layout: page`, and `permalink`. The dropdown opens on hover or keyboard focus on desktop, and its links are shown underneath Community Hub on mobile.
 
 ### Blog Page
 
