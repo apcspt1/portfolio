@@ -123,3 +123,10 @@ permalink: /community
 
   </div>
 </div>
+
+| Resource Name | Description | Link |
+| :--- | :--- | :--- |
+| **Programs** | Programs offered by the MyGoodBrain Community | [Programs](https://apcspt1/portfolio/community/programs/) |
+| **Events** | Events Hosted by MyGoodBrain | [Events](https://apcspt1/portfolio/community/events/) |
+| **Volunteering** | Volunteer Opportunities | [Volunteering](https://apcspt1/portfolio/community/volunteer/) |
+ 3b767a9 (fix links in community table #2)
