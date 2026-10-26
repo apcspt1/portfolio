@@ -5,6 +5,6 @@ permalink: /community
 ---
 | Resource Name | Description | Link |
 | :--- | :--- | :--- |
-| **GitHub** | Check out my repositories | [Visit GitHub](https://github.com) |
-| **Portfolio** | My personal website | [View Site](https://example.com) |
-| **Discord** | Join the community server | [Connect](https://discord.com) |
+| **Programs** | Programs offered by the MyGoodBrain Community | [Programs](programs.md) |
+| **Events** | Events Hosted by MyGoodBrain | [Events](events.md) |
+| **Volunteering** | Volunteer Opportunities | [Volunteering](volunteer.md) |
