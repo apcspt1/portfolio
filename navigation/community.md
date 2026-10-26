@@ -5,6 +5,6 @@ permalink: /community
 ---
 | Resource Name | Description | Link |
 | :--- | :--- | :--- |
-| **Programs** | Programs offered by the MyGoodBrain Community | [Programs](programs.md) |
-| **Events** | Events Hosted by MyGoodBrain | [Events](events.md) |
-| **Volunteering** | Volunteer Opportunities | [Volunteering](volunteer.md) |
+| **Programs** | Programs offered by the MyGoodBrain Community | [Programs](navigation/community/programs.md) |
+| **Events** | Events Hosted by MyGoodBrain | [Events](navigation/community/events.md) |
+| **Volunteering** | Volunteer Opportunities | [Volunteering](navigation/community/volunteer.md) |
