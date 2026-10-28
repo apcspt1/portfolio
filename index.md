@@ -12,8 +12,6 @@ Hi! We are in AP CSP Trimester 1, and our team is Rashi, Aashni, and Kelervia.
 
 <!-- markdownlint-disable MD033 MD046 -->
 
-{% include sass-nav.html %}
-
 Hi! My name is [Your Full Name]
 
 ## Learning Buttons
