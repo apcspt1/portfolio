@@ -3,130 +3,115 @@ layout: page
 title: Community Hub
 permalink: /community
 ---
-<div class="mgb-community-hub">
-  
-  <!-- Animated Background Orbs -->
-  <div class="mgb-ambient-bg">
-    <div class="mgb-orb mgb-orb--1"></div>
-    <div class="mgb-orb mgb-orb--2"></div>
-  </div>
 
-  <!-- Hero Banner -->
-  <div class="mgb-hub-hero">
-    <div class="mgb-hub-badge">
-      <span class="mgb-pulse-dot"></span>
-      My Good Brain • Community Portal
-    </div>
-    <h1 class="mgb-hub-title">Empowering Youth Through Creative Wellness</h1>
-    <p class="mgb-hub-subtitle">
+<div class="ocs__container ocs__community-hub">
+  <header class="ocs__community-hub-hero">
+    <span class="ocs__badge">My Good Brain · Community Portal</span>
+    <h1>Empowering Youth Through Creative Wellness</h1>
+    <p class="ocs__lead">
       Welcome to the central resource hub for San Diego youth, families, and volunteers. Explore active programs, discover upcoming events, or join our volunteer network.
     </p>
-    <div class="mgb-hero-stats">
-      <div class="mgb-stat-item">
-        <span class="mgb-stat-number">10+</span>
-        <span class="mgb-stat-label">Active Programs</span>
+
+    <div class="ocs__stats ocs__community-stats" aria-label="Community highlights">
+      <div class="ocs__stat">
+        <span class="ocs__stat-value">10+</span>
+        <span class="ocs__stat-label">Active Programs</span>
       </div>
-      <div class="mgb-stat-divider"></div>
-      <div class="mgb-stat-item">
-        <span class="mgb-stat-number">100%</span>
-        <span class="mgb-stat-label">Free Community Resources</span>
+      <div class="ocs__stat">
+        <span class="ocs__stat-value">100%</span>
+        <span class="ocs__stat-label">Free Community Resources</span>
       </div>
-      <div class="mgb-stat-divider"></div>
-      <div class="mgb-stat-item">
-        <span class="mgb-stat-number">San Diego</span>
-        <span class="mgb-stat-label">Youth & Family Outreach</span>
+      <div class="ocs__stat">
+        <span class="ocs__stat-value">San Diego</span>
+        <span class="ocs__stat-label">Youth &amp; Family Outreach</span>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Main Resource Grid -->
-  <div class="mgb-hub-grid">
-    
-    <!-- Programs Card -->
-    <div class="mgb-hub-card mgb-hub-card--programs">
-      <div class="mgb-card-glow"></div>
-      <div class="mgb-card-header">
-        <div class="mgb-card-icon">🎨</div>
-        <span class="mgb-card-tag">Interactive Hub</span>
-      </div>
-      <div class="mgb-card-body">
-        <h2 class="mgb-card-title">Community Programs</h2>
-        <p class="mgb-card-desc">
+  <section class="ocs__community-hub-grid" aria-label="Community resources">
+    <article class="ocs__card ocs__community-hub-card">
+      <div>
+        <span aria-hidden="true">🎨</span>
+        <span class="ocs__badge">Interactive Hub</span>
+        <h2>Community Programs</h2>
+        <p class="ocs__text">
           Browse our suite of 10+ art and mental wellness initiatives, including Sunday Art Club, Teen Creative Arts, MGB Tool Kits, and military family workshops.
         </p>
-        <div class="mgb-card-buttons">
-          <span class="mgb-pill-btn">✨ Live Search & Tag Filtering</span>
-          <span class="mgb-pill-btn">🎨 Hands-on Art Therapy Kits</span>
-          <span class="mgb-pill-btn">🎧 Youth Wellness Podcast</span>
+        <div class="ocs__community-card-tags" aria-label="Program features">
+          <span class="ocs__badge">Live Search &amp; Tag Filtering</span>
+          <span class="ocs__badge">Hands-on Art Therapy Kits</span>
+          <span class="ocs__badge">Youth Wellness Podcast</span>
         </div>
       </div>
-      <div class="mgb-card-footer">
-        <a href="{{ site.baseurl }}/community/programs/" class="ocs-btn ocs-btn--primary">
-          <span>Explore Programs</span>
-          <span class="ocs-btn-arrow">&rarr;</span>
-        </a>
+      <div class="ocs__links">
+        <a href="{{ site.baseurl }}/community/programs/" class="ocs__btn accent fill">Explore Programs <span aria-hidden="true">&rarr;</span></a>
       </div>
-    </div>
+    </article>
 
-    <!-- Events Card -->
-    <div class="mgb-hub-card mgb-hub-card--events">
-      <div class="mgb-card-glow"></div>
-      <div class="mgb-card-header">
-        <div class="mgb-card-icon">📅</div>
-        <span class="mgb-card-tag">Live Workshops</span>
-      </div>
-      <div class="mgb-card-body">
-        <h2 class="mgb-card-title">Events & Calendar</h2>
-        <p class="mgb-card-desc">
+    <article class="ocs__card ocs__community-hub-card">
+      <div>
+        <span aria-hidden="true">📅</span>
+        <span class="ocs__badge">Live Workshops</span>
+        <h2>Events &amp; Calendar</h2>
+        <p class="ocs__text">
           Join us for interactive drop-in sessions, community art gatherings, library workshops, and seasonal mental health summits.
         </p>
-        <div class="mgb-card-buttons">
-          <span class="mgb-pill-btn">📍 Local San Diego Gatherings</span>
-          <span class="mgb-pill-btn">🕒 Flexible Drop-in Schedules</span>
-          <span class="mgb-pill-btn">💬 Safe Peer Support Spaces</span>
+        <div class="ocs__community-card-tags" aria-label="Event features">
+          <span class="ocs__badge">Local San Diego Gatherings</span>
+          <span class="ocs__badge">Flexible Drop-in Schedules</span>
+          <span class="ocs__badge">Safe Peer Support Spaces</span>
         </div>
       </div>
-      <div class="mgb-card-footer">
-        <a href="{{ site.baseurl }}/community/events/" class="ocs-btn ocs-btn--primary">
-          <span>View Schedule</span>
-          <span class="ocs-btn-arrow">&rarr;</span>
-        </a>
+      <div class="ocs__links">
+        <a href="{{ site.baseurl }}/community/events/" class="ocs__btn accent fill">View Schedule <span aria-hidden="true">&rarr;</span></a>
       </div>
-    </div>
+    </article>
 
-    <!-- Volunteer Card -->
-    <div class="mgb-hub-card mgb-hub-card--volunteer">
-      <div class="mgb-card-glow"></div>
-      <div class="mgb-card-header">
-        <div class="mgb-card-icon">🤝</div>
-        <span class="mgb-card-tag">Get Involved</span>
-      </div>
-      <div class="mgb-card-body">
-        <h2 class="mgb-card-title">Volunteer Network</h2>
-        <p class="mgb-card-desc">
+    <article class="ocs__card ocs__community-hub-card">
+      <div>
+        <span aria-hidden="true">🤝</span>
+        <span class="ocs__badge">Get Involved</span>
+        <h2>Volunteer Network</h2>
+        <p class="ocs__text">
           Make a direct impact in youth mental health. Become a workshop assistant, content creator, event coordinator, or peer mentor.
         </p>
-        <div class="mgb-card-buttons">
-          <span class="mgb-pill-btn">🚀 Student Leadership Roles</span>
-          <span class="mgb-pill-btn">📜 Service Hour Credit</span>
-          <span class="mgb-pill-btn">💡 Creative Team Projects</span>
+        <div class="ocs__community-card-tags" aria-label="Volunteer benefits">
+          <span class="ocs__badge">Student Leadership Roles</span>
+          <span class="ocs__badge">Service Hour Credit</span>
+          <span class="ocs__badge">Creative Team Projects</span>
         </div>
       </div>
-      <div class="mgb-card-footer">
-        <a href="{{ site.baseurl }}/community/volunteer/" class="ocs-btn ocs-btn--primary">
-          <span>Join as Volunteer</span>
-          <span class="ocs-btn-arrow">&rarr;</span>
-        </a>
+      <div class="ocs__links">
+        <a href="{{ site.baseurl }}/community/volunteer/" class="ocs__btn accent fill">Join as Volunteer <span aria-hidden="true">&rarr;</span></a>
       </div>
+    </article>
+  </section>
+
+  <section class="ocs__card" aria-labelledby="community-resource-list">
+    <h2 id="community-resource-list" class="ocs__section-title">Community Resources</h2>
+    <div class="ocs__table-wrap">
+      <table class="ocs__table">
+        <thead>
+          <tr><th>Resource Name</th><th>Description</th><th>Link</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Programs</td>
+            <td>Programs offered by the MyGoodBrain Community</td>
+            <td><a href="{{ site.baseurl }}/community/programs/">Programs</a></td>
+          </tr>
+          <tr>
+            <td>Events</td>
+            <td>Events hosted by MyGoodBrain</td>
+            <td><a href="{{ site.baseurl }}/community/events/">Events</a></td>
+          </tr>
+          <tr>
+            <td>Volunteering</td>
+            <td>Volunteer opportunities</td>
+            <td><a href="{{ site.baseurl }}/community/volunteer/">Volunteering</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-  </div>
+  </section>
 </div>
-
-| Resource Name | Description | Link |
-| :--- | :--- | :--- |
-| **Programs** | Programs offered by the MyGoodBrain Community | [Programs](https://apcspt1/portfolio/community/programs/) |
-| **Events** | Events Hosted by MyGoodBrain | [Events](https://apcspt1/portfolio/community/events/) |
-| **Volunteering** | Volunteer Opportunities | [Volunteering](https://apcspt1/portfolio/community/volunteer/) |
-
-
