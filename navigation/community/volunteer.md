@@ -92,4 +92,49 @@ permalink: /community/volunteer/
     </table>
   </div>
 
+  <section class="ocs__volunteer-signup" aria-labelledby="volunteer-signup-title">
+    <h3 id="volunteer-signup-title">Interested in volunteering?</h3>
+    <p>Fill out this form preview to explore the sign-up experience. It does not send or save your information.</p>
+
+    <form id="ocs-volunteer-signup" class="ocs__volunteer-form">
+      <div class="ocs__volunteer-form-grid">
+        <div class="ocs__volunteer-field">
+          <label for="volunteer-name">Name <span aria-hidden="true">*</span></label>
+          <input id="volunteer-name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="ocs__volunteer-field">
+          <label for="volunteer-email">Email <span aria-hidden="true">*</span></label>
+          <input id="volunteer-email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="ocs__volunteer-field ocs__volunteer-field--wide">
+          <label for="volunteer-role">Role of interest <span aria-hidden="true">*</span></label>
+          <select id="volunteer-role" name="role" required>
+            <option value="" selected disabled>Choose a volunteer role</option>
+            <option>Research &amp; Education</option>
+            <option>Webmaster</option>
+            <option>Tool Kit Assembly leader</option>
+            <option>Community Outreach &amp; Events</option>
+            <option>Video Content Creator</option>
+            <option>I'm open to any role</option>
+          </select>
+        </div>
+
+        <div class="ocs__volunteer-field ocs__volunteer-field--wide">
+          <label for="volunteer-note">What would you like us to know? <span class="ocs__volunteer-optional">(optional)</span></label>
+          <textarea id="volunteer-note" name="message" rows="4" maxlength="500"></textarea>
+        </div>
+      </div>
+
+      <button class="ocs__btn accent fill" id="volunteer-preview-button" type="button" disabled>Preview sign-up</button>
+      <p class="ocs__volunteer-status" id="volunteer-preview-status" role="status" aria-live="polite">
+        Preview only — your information will not be sent or saved.
+      </p>
+      <noscript><p>JavaScript is required to use this form preview. Your information is not submitted.</p></noscript>
+    </form>
+  </section>
+
 </div>
+
+<script src="{{ site.baseurl }}/assets/js/volunteer-signup.js" defer></script>
