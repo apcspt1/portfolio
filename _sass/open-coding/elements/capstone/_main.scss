@@ -16,6 +16,19 @@
   color: var(--pref-text-color);
 }
 
+.ocs__container--center {
+  text-align: center;
+}
+
+.ocs__container--center .ocs__entity-list {
+  list-style-position: inside;
+}
+
+.ocs__container--center .ocs__table th,
+.ocs__container--center .ocs__table td {
+  text-align: center;
+}
+
 .ocs__capstone-footer {
   display: flex;
   align-items: center;
