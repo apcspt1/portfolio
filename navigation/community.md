@@ -11,7 +11,7 @@ hide_title: true
 
   <div class="ocs__card">
     <div class="ocs__grid ocs__grid--standard cols-3">
-      <div class="ocs__grid-cell ocs__grid-cell--accent"><strong>10+</strong><br>Active Programs</div>
+      <div class="ocs__grid-cell"><strong>10+</strong><br>Active Programs</div>
       <div class="ocs__grid-cell"><strong>100%</strong><br>Free Community Resources</div>
       <div class="ocs__grid-cell"><strong>San Diego</strong><br>Youth &amp; Family Outreach</div>
     </div>
@@ -57,17 +57,6 @@ hide_title: true
   </div>
 </div>
 
-<div class="ocs__container ocs__container--center">
-<div class="ocs__table-wrap">
-<table class="ocs__table">
-<thead><tr><th>Resource Name</th><th>Description</th><th>Link</th></tr></thead>
-<tbody>
-<tr><td><strong>Programs</strong></td><td>Programs offered by the MyGoodBrain Community</td><td><a href="{{ '/community/programs/' | relative_url }}">Programs</a></td></tr>
-<tr><td><strong>Events</strong></td><td>Events Hosted by MyGoodBrain</td><td><a href="{{ '/community/events/' | relative_url }}">Events</a></td></tr>
-<tr><td><strong>Volunteering</strong></td><td>Volunteer Opportunities</td><td><a href="{{ '/community/volunteer/' | relative_url }}">Volunteering</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+
 
 

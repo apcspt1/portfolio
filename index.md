@@ -1,107 +1,112 @@
 ---
-layout: post 
-title: Portfolio Home 
+layout: page
+title: My Good Brain
 hide: true
+hide_title: true
 show_reading_time: false
 ---
 
-Hi! We are in AP CSP Trimester 1, and our team is Rashi, Aashni, and Kelervia.
+<style>
+  .mgb-home { --ink: #e6eef8; --muted: #e1e1e6; --accent: #3b82f6; --accent-hover: #60a5fa; --panel: #2b2b2b; --panel-border: rgba(255,255,255,.06); position: relative; left: 50%; width: 100vw; margin-left: -50vw; background: #121212; color: var(--ink); }
+  .mgb-home * { box-sizing: border-box; }
+  .mgb-home__hero { display: grid; place-items: center; padding: clamp(4rem, 10vw, 7rem) 1.5rem clamp(2.5rem, 6vw, 4rem); color: var(--ink); text-align: center; }
+  .mgb-home__hero-copy { max-width: 50rem; margin: 0 auto; }
+  .mgb-home__hero h1 { margin: 0 0 1rem; color: #fff; font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; line-height: 1.2; }
+  .mgb-home__hero p { max-width: 46rem; margin: auto; color: var(--muted); font-size: 1.15rem; line-height: 1.6; }
+  .mgb-home__section { padding: clamp(3rem, 7vw, 6rem) clamp(1.1rem, 5vw, 4rem); }
+  .mgb-home__inner { width: min(100%, 70rem); margin: 0 auto; }
+  .mgb-home__mission { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(14rem, .8fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+  .mgb-home .mgb-home__section h2 { margin: 0 0 1rem; color: var(--ink) !important; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; }
+  .mgb-home .mgb-home__section p { color: var(--muted) !important; font-size: 1.05rem; line-height: 1.75; }
+  .mgb-home__quote { margin: 0; padding: 1.6rem; border: 1px solid var(--panel-border); border-left: 4px solid var(--accent); border-radius: 1rem; background: var(--panel); color: var(--ink); font-size: clamp(1.25rem, 2.4vw, 1.8rem); line-height: 1.4; }
+  .mgb-home__quote cite { display: block; margin-top: 1rem; font-size: 1rem; font-style: normal; }
+  .mgb-home__button { display: inline-block; margin-top: .75rem; padding: .85rem 1.35rem; border: 1px solid var(--accent); border-radius: .75rem; background: #14294b; color: var(--ink) !important; font-weight: 700; text-decoration: none; transition: background .2s ease, border-color .2s ease; }
+  .mgb-home__button:hover { background: var(--accent); border-color: var(--accent-hover); color: #fff !important; }
+  .mgb-home__features, .mgb-home__blog { background: transparent; }
+  .mgb-home__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+  .mgb-home__card { overflow: hidden; border: 1px solid var(--panel-border); border-radius: 1rem; background: var(--panel); box-shadow: 0 8px 26px rgba(0,0,0,.2); }
+  .mgb-home__card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .mgb-home__card-copy { padding: 1.4rem; }
+  .mgb-home__card h3 { margin: 0 0 .5rem; color: var(--ink) !important; font-size: 1.35rem; line-height: 1.25; }
+  .mgb-home__card p { margin: .4rem 0 1rem; }
+  .mgb-home__card a:not(.mgb-home__button) { color: #4bbaff; font-weight: 700; }
+  .mgb-home__features .mgb-home__card a:hover { color: #000 !important; }
+  .mgb-home__news { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .mgb-home__news article { padding: 1.4rem; border: 1px solid var(--panel-border); border-radius: .8rem; background: var(--panel); }
+  .mgb-home__news h3 { margin: 0 0 .65rem; color: var(--ink) !important; font-size: 1.25rem; }
+  .mgb-home__news a { color: #4bbaff; font-weight: 700; }
+  .mgb-home__news a:hover,
+  .mgb-home__card a:hover { padding: 0 .15rem; border-radius: .2rem; background: var(--accent-hover); color: #000 !important; }
+  .mgb-home__blog .mgb-home__card img { aspect-ratio: 16 / 10; }
+  .mgb-home__donate { background: var(--panel); border-top: 1px solid var(--panel-border); border-bottom: 1px solid var(--panel-border); text-align: center; }
+  .mgb-home__donate p { max-width: 46rem; margin: 0 auto 1rem; }
+  @media (max-width: 760px) { .mgb-home__mission { grid-template-columns: 1fr; } .mgb-home__grid, .mgb-home__news { grid-template-columns: 1fr; } }
+</style>
 
-### Development Environment
+<div class="mgb-home">
+  <section class="mgb-home__hero" aria-labelledby="mgb-home-title">
+    <div class="mgb-home__hero-copy">
+      <h1 id="mgb-home-title">My Good Brain</h1>
+      <p>An Arts-Based Nonprofit Organization for Youth Mental Wellness</p>
+    </div>
+  </section>
 
+  <section class="mgb-home__section">
+    <div class="mgb-home__inner mgb-home__mission">
+      <div>
+        <h2>Bridging Psychology &amp; Art</h2>
+        <p>My Good Brain is an arts-based nonprofit focused on promoting mental wellness among school-aged youth.</p>
+        <p>Through the vehicle of art and play, we aim to teach children from a young age through adolescence how to practice healthy coping strategies for mental and emotional wellness.</p>
+        <a class="mgb-home__button" href="https://www.mygoodbrain.org/our-mission">Our Mission</a>
+      </div>
+      <blockquote class="mgb-home__quote">“Art is as natural as sunshine and as vital as nourishment.”<cite>— MaryAnn F. Kohl</cite></blockquote>
+    </div>
+  </section>
 
-<!-- markdownlint-disable MD033 MD046 -->
+  <section class="mgb-home__section mgb-home__features">
+    <div class="mgb-home__inner mgb-home__grid">
+      <article class="mgb-home__card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/90ab2abe-a907-4e62-bd39-8c2b770fcd45/AdobeStock_671974002.jpeg?format=1500w" alt="Art materials ready for a creative activity" loading="lazy">
+        <div class="mgb-home__card-copy"><h3>Homeschool &amp; Enrichment Families</h3><p>Your enrichment funds can come here.</p><a href="{{ '/community/programs/' | relative_url }}">Learn more →</a></div>
+      </article>
+      <article class="mgb-home__card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/ab267415-4074-4f70-9c17-9ff3b8d82f0e/AdobeStock_494897619.jpeg" alt="Family enjoying an art activity together" loading="lazy">
+        <div class="mgb-home__card-copy"><h3>Building Resilient Families Through Art</h3><p>A free resource for San Diego veterans and parents of young children.</p><a href="{{ '/community/programs/' | relative_url }}">Learn more →</a></div>
+      </article>
+      <article class="mgb-home__card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1773180586469-4EBY4RXTNIE56GQ9QB6B/unsplash-image-fXkoHG4dYxA.jpg" alt="Creative supplies for expressive art" loading="lazy">
+        <div class="mgb-home__card-copy"><h3>Immigration &amp; Family Support Resources</h3><p>Resources to help youth, families, and communities better understand and support the mental health impacts of immigration-related experiences.</p><a href="{{ '/community/programs/' | relative_url }}">Learn more →</a></div>
+      </article>
+    </div>
+  </section>
 
-{% include sass-nav.html %}
+  <section class="mgb-home__section">
+    <div class="mgb-home__inner">
+      <h2>News &amp; Updates</h2>
+      <div class="mgb-home__news">
+        <article><h3>NEW: Scrap Lab</h3><p>Check out our new art class: Scrap Lab! A drop-in upcycling and recycling art class where kids ages 4–12 build, invent, and create freely using recycled and reclaimed materials every Tuesday from 10:00 AM to 12:00 PM at our Liberty Station studio.</p><a href="{{ '/community/events/' | relative_url }}">Join Us →</a></article>
+        <article><h3>MGB Family Membership is here!</h3><p>Save money on toddler classes by getting a 10-class pack or Family Membership plan!</p><a href="{{ '/community/events/' | relative_url }}">Sign Up →</a></article>
+        <article><h3>Sunday Art Club - Mother's Day Edition</h3><p>Sunday Art Club is back for a special Mother's Day edition! This month we're making handmade gifts for mom using the art of quilling — rolled paper art that looks intricate and impressive but is completely beginner-friendly.</p><a href="{{ '/community/events/' | relative_url }}">Join Us →</a></article>
+      </div>
+    </div>
+  </section>
 
-Hi! My name is [Your Full Name]
+  <section class="mgb-home__section mgb-home__blog">
+    <div class="mgb-home__inner">
+      <h2>From the Blog</h2>
+      <div class="mgb-home__grid">
+        <article class="mgb-home__card"><img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1789183399965-1LTFSI8FY7XBDRYTD7TK/unsplash-image-Zzgmde4_lYU.jpg?format=300w" alt="Comfort object" loading="lazy"><div class="mgb-home__card-copy"><h3>Why Comfort Objects Help Kids Through Transitions</h3><p>Small objects can provide children with a sense of safety and resilience as they move through new experiences.</p><a href="https://www.mygoodbrain.org/blog/why-comfort-objects-help-kids-through-transitions">Read more →</a></div></article>
+        <article class="mgb-home__card"><img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1783978382982-8JKKBCKZJCZ6FBDMS1F4/Screenshot+2026-07-13+at+2.32.02%E2%80%AFPM.png?format=300w" alt="Illustration for How Perfect is Perfect?" loading="lazy"><div class="mgb-home__card-copy"><h3>How Perfect is Perfect?</h3><a href="https://www.mygoodbrain.org/blog/how-perfect-is-perfect">Read more →</a></div></article>
+        <article class="mgb-home__card"><img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1783572536018-K8QAK55P4U0EEPYR2CJY/header.png?format=300w" alt="From Burnt Out to Back on Track" loading="lazy"><div class="mgb-home__card-copy"><h3>From Burnt Out to Back on Track</h3><p>Riya shares her experience navigating burnout and getting back on track as a high school student, one small step at a time!</p><a href="https://www.mygoodbrain.org/blog/burnt-out-to-back-on-track">Read more →</a></div></article>
+      </div>
+    </div>
+  </section>
 
-## Learning Buttons
-
-> SASS Mixins examples and code, explore these topics by clicking standard OCS SASS buttons.
-
-<div class="ocs__links">
-    <a class="ocs__btn" href="{{site.baseurl}}/github/pages/about_sass_buttons/">
-        Buttons Lesson
-    </a>
-    <a class="ocs__btn" href="https://github.com/Open-Coding-Society/pages/blob/main/_sass/open-coding/mixins/_buttons.scss">
-        Button Mixins
-    </a>
-    <a class="ocs__btn" href="https://github.com/Open-Coding-Society/pages/blob/main/_sass/open-coding/mixins/_container.scss">
-        Container Mixins
-    </a>
+  <section class="mgb-home__section mgb-home__donate">
+    <div class="mgb-home__inner">
+      <h2>Make a donation.</h2>
+      <p>Change happens when people and communities work together. Donate generously to help us reach more children in California who need better resources for mental health.</p>
+      <a class="mgb-home__button" href="https://www.mygoodbrain.org/donate">Donate</a>
+    </div>
+  </section>
 </div>
-
-## Development Environment
-
-> Coding starts with tools, explore these tools clicking SASS buttons with SVG.
-
-<div class="ocs__links ocs__links--wide">
-    <a class="ocs__btn ocs__btn--icon alert-green" href="https://opencodingsociety.com">
-        <span class="ocs__btn-icon" aria-hidden="true">
-            <img src="{{ '/favicon.ico' | relative_url }}" alt="">
-        </span>
-        <span>OCS</span>
-    </a>
-    <a class="ocs__btn ocs__btn--icon alert-yellow" href="https://github.com/Open-Coding-Society/portfolio">
-        <span class="ocs__btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-        </span>
-        <span>GitHub</span>
-    </a>
-    <a class="ocs__btn ocs__btn--icon alert-red" href="https://vscode.dev/">
-        <span class="ocs__btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.34 0L5.66 5.39l-2.4-1.8L1.19 4.82v6.36l2.07 1.23 2.4-1.8L11.34 16 15 14.23V1.77L11.34 0zm.59 11.57l-3.86-3.54 3.86-3.54v7.08z"/>
-            </svg>
-        </span>
-        <span>VSCode.dev</span>
-    </a>
-</div>
-
-<br>
-
-## Code Runner Lessons
-
-> Foundations in Tech are essential, click my iridescent buttons to see some of my lesson creations.
-
-<div class="ocs__links">
-    <a class="ocs__btn iridescent" href="{{site.baseurl}}/code/javascript">
-        JS Basics
-    </a>
-    <a class="ocs__btn alert-green iridescent" href="{{site.baseurl}}/game/essentials/variables">
-        JS Variables
-    </a>
-    <a class="ocs__btn alert-yellow iridescent" href="{{site.baseurl}}/navigation/sass">
-       SASS
-    </a>
-    <a class="ocs__btn alert-yellow iridescent" href="{{site.baseurl}}/gamerunner">
-        Gamerunner
-    </a>
-    <a class="ocs__btn alert-red iridescent" href="{{site.baseurl}}/network/stack">
-        Networking
-    </a>
-</div>
-
-<br>
-
-### Class Progress
-
-> Here is my game progress through coding, click multicolor and size buttons to see these in the browser
-
-<div class="ocs__links">
-    <a href="{{site.baseurl}}/snake" class="ocs__btn pill alert-green fill">
-        Snake
-    </a>
-    <a href="{{site.baseurl}}/gamify/parallax" class="ocs__btn small alert-yellow fill">
-        Fish
-    </a>
-    <a href="{{site.baseurl}}/gamify" class="ocs__btn alert-red fill">
-        Gamify
-    </a>
-</div>
-
-<br>
-<!-- markdownlint-enable MD033 MD046 -->
