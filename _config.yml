@@ -113,7 +113,6 @@ minima:
     - navigation/home.md
     - navigation/about.md
     - navigation/community.md
-    - navigation/blog.md
     - navigation/resources.md 
     - navigation/login.md
 
