@@ -24,7 +24,7 @@ DEV_PROJECTS := $(shell grep -v '^\#' $(PROJECT_FILE) 2>/dev/null | grep -v '^$$
 
 # Known top-level targets (add to this if needed)
 KNOWN_TARGETS := \
-	default dev serve build clean stop reload refresh help \
+	default dev serve build clean stop reload refresh help wait-for-server \
 	serve-minima serve-cayman serve-yat serve-so-simple serve-hydejack \
 	build-minima build-cayman build-yat build-so-simple \
 	convert convert-docx convert-docx-config convert-single convert-registered-notebooks \
@@ -373,7 +373,18 @@ clean-generated-makefiles:
 
 stop:
 	@echo "Stopping server..."
-	@@lsof -ti :$(PORT) | xargs kill >/dev/null 2>&1 || true
+	@SERVER_PIDS="$$(lsof -ti :$(PORT) 2>/dev/null || true)"; \
+	if [ -n "$$SERVER_PIDS" ]; then \
+		kill $$SERVER_PIDS >/dev/null 2>&1 || true; \
+		for COUNTER in {1..10}; do \
+			if ! lsof -ti :$(PORT) >/dev/null 2>&1; then break; fi; \
+			sleep 1; \
+		done; \
+		if lsof -ti :$(PORT) >/dev/null 2>&1; then \
+			echo "Server on port $(PORT) did not stop." >&2; \
+			exit 1; \
+		fi; \
+	fi
 	@echo "Stopping logging process..."
 	@@ps aux | awk -v log_file=$(LOG_FILE) '$$0 ~ "tail -f " log_file { print $$2 }' | xargs kill >/dev/null 2>&1 || true
 	@echo "Stopping notebook watcher..."
@@ -538,7 +549,7 @@ wait-for-server:
 			cat $(LOG_FILE); \
 			exit 1; \
 		fi; \
-		if [ $$COUNTER -gt 5 ] && grep -E -qi "\bfatal\b|\bexception\b" $(LOG_FILE); then \
+		if grep -E -qi "jekyll .*[|] Error:|\\bfatal\\b|\\bexception\\b" $(LOG_FILE); then \
 			echo "Fatal error detected during startup!"; \
 			cat $(LOG_FILE); \
 			exit 1; \
