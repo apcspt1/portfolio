@@ -190,13 +190,7 @@ active_tab: dashboard
                             <div>
                                 <label class="text-sm text-neutral-400">Font family</label>
                                 <select id="pref-font-family" class="w-full bg-neutral-700 text-white rounded px-2 py-1 mt-1">
-                                    <option value="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial">Inter / System</option>
-                                    <option value="Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial">Roboto</option>
-                                    <option value="'Open Sans', Arial, sans-serif">Open Sans</option>
-                                    <option value="Lato, Arial, sans-serif">Lato</option>
-                                    <option value="Montserrat, Arial, sans-serif">Montserrat</option>
-                                    <option value="Georgia, 'Times New Roman', Times, serif">Georgia (Serif)</option>
-                                    <option value="'Source Code Pro', monospace">Source Code Pro</option>
+                                    <option value="'Poppins', sans-serif">Poppins (site-wide)</option>
                                 </select>
                             </div>
 
@@ -453,14 +447,15 @@ active_tab: dashboard
 
     // Map possible names to the font <select> values used in the form
     const FONT_MAP = {
-      'inter': "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
-      'roboto': "Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial",
-      'open sans': "'Open Sans', Arial, sans-serif",
-      'lato': "Lato, Arial, sans-serif",
-      'montserrat': "Montserrat, Arial, sans-serif",
-      'georgia': "Georgia, 'Times New Roman', Times, serif",
-      'source code pro': "'Source Code Pro', monospace",
-      'sourcecodepro': "'Source Code Pro', monospace"
+      'poppins': "'Poppins', sans-serif",
+      'inter': "'Poppins', sans-serif",
+      'roboto': "'Poppins', sans-serif",
+      'open sans': "'Poppins', sans-serif",
+      'lato': "'Poppins', sans-serif",
+      'montserrat': "'Poppins', sans-serif",
+      'georgia': "'Poppins', sans-serif",
+      'source code pro': "'Poppins', sans-serif",
+      'sourcecodepro': "'Poppins', sans-serif"
     };
 
     function tryParseResponsePayload(data) {
