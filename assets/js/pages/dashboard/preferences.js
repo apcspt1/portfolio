@@ -29,19 +29,19 @@ export class PreferencesConfig {
     static SITE_DEFAULT = {
         bg: '#fcfaff',
         text: '#382e47',
-        font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+        font: "'Poppins', sans-serif",
         size: 14,
         accent: '#7653b3'
     };
 
     static PRESETS = window.SitePreferences?.PRESETS || {
         'Site Default': PreferencesConfig.SITE_DEFAULT,
-        'Midnight': { bg: '#0b1220', text: '#e6eef8', font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial", size: 14, accent: '#3b82f6' },
-        'Light': { bg: '#fcfaff', text: '#382e47', font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial", size: 14, accent: '#7653b3' },
-        'Green': { bg: '#154734', text: '#e6f6ef', font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial", size: 14, accent: '#10b981' },
-        'Sepia': { bg: '#f4ecd8', text: '#3b2f2f', font: "Georgia, 'Times New Roman', Times, serif", size: 14, accent: '#b45309' },
-        'Cyberpunk': { bg: '#0a0a0f', text: '#f0f0f0', font: "'Source Code Pro', monospace", size: 14, accent: '#f72585' },
-        'Ocean': { bg: '#0c1929', text: '#e0f2fe', font: "'Open Sans', Arial, sans-serif", size: 15, accent: '#06b6d4' }
+        'Midnight': { bg: '#0b1220', text: '#e6eef8', font: "'Poppins', sans-serif", size: 14, accent: '#3b82f6' },
+        'Light': { bg: '#fcfaff', text: '#382e47', font: "'Poppins', sans-serif", size: 14, accent: '#7653b3' },
+        'Green': { bg: '#154734', text: '#e6f6ef', font: "'Poppins', sans-serif", size: 14, accent: '#10b981' },
+        'Sepia': { bg: '#f4ecd8', text: '#3b2f2f', font: "'Poppins', sans-serif", size: 14, accent: '#b45309' },
+        'Cyberpunk': { bg: '#0a0a0f', text: '#f0f0f0', font: "'Poppins', sans-serif", size: 14, accent: '#f72585' },
+        'Ocean': { bg: '#0c1929', text: '#e0f2fe', font: "'Poppins', sans-serif", size: 15, accent: '#06b6d4' }
     };
 
     static MAX_CUSTOM = 10;

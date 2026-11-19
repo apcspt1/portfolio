@@ -74,7 +74,7 @@
   const SITE_DEFAULT = {
     bg: '#fcfaff',
     text: '#382e47',
-    font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+    font: "'Poppins', sans-serif",
     size: 14,
     accent: '#7653b3',
   };
@@ -83,32 +83,32 @@
     'Site Default': SITE_DEFAULT,
     Midnight: {
       bg: '#0b1220', text: '#e6eef8',
-      font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+      font: "'Poppins', sans-serif",
       size: 14, accent: '#3b82f6',
     },
     Light: {
       bg: '#fcfaff', text: '#382e47',
-      font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+      font: "'Poppins', sans-serif",
       size: 14, accent: '#7653b3',
     },
     Green: {
       bg: '#154734', text: '#e6f6ef',
-      font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+      font: "'Poppins', sans-serif",
       size: 14, accent: '#10b981',
     },
     Sepia: {
       bg: '#f4ecd8', text: '#A52A2A',
-      font: "Georgia, 'Times New Roman', Times, serif",
+      font: "'Poppins', sans-serif",
       size: 14, accent: '#b45309',
     },
     Cyberpunk: {
       bg: '#0a0a0f', text: '#f0f0f0',
-      font: "'Source Code Pro', monospace",
+      font: "'Poppins', sans-serif",
       size: 14, accent: '#f72585',
     },
     Ocean: {
       bg: '#0c1929', text: '#e0f2fe',
-      font: "'Open Sans', Arial, sans-serif",
+      font: "'Poppins', sans-serif",
       size: 15, accent: '#06b6d4',
     },
   };
@@ -333,7 +333,7 @@
       const base = SITE_DEFAULT;
       const bg = prefs?.bg || base.bg;
       const text = prefs?.text || base.text;
-      const font = prefs?.font || base.font;
+      const font = base.font;
       const size = prefs?.size || base.size;
       const accent = prefs?.accent || base.accent;
       const selectionColor = prefs?.selectionColor || accent;
