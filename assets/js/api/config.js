@@ -9,7 +9,7 @@ export const baseurl = "{{ site.baseurl }}";
 
 export var pythonURI;
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    pythonURI = "http://localhost:8588";  // Same URI for localhost or 127.0.0.1
+    pythonURI = "http://localhost:8470";  // Same URI for localhost or 127.0.0.1
 } else {
     pythonURI = "https://mgb-api.opencodingsociety.com";
 
