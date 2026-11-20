@@ -311,7 +311,7 @@
 
 .ocs__community-hub.user-theme-active,
 .user-theme-active .ocs__community-hub {
-  background: #fcfaff !important;
+  background: var(--pref-bg-color) !important;
   color: var(--hub-ink) !important;
 }
 
@@ -319,7 +319,7 @@
 .user-theme-active .ocs__community-hub-card,
 .user-theme-active .ocs__community-highlight,
 .user-theme-active .ocs__community-note {
-  background-color: #ffffff !important;
+  background-color: var(--pref-bg-color) !important;
   color: var(--hub-ink) !important;
 }
 
@@ -330,7 +330,7 @@
 }
 
 .user-theme-active .ocs__community-hub .ocs__community-hub-card {
-  background: #ffffff !important;
+  background: var(--pref-bg-color) !important;
 }
 
 .user-theme-active .ocs__community-hub-hero .ocs__lead,

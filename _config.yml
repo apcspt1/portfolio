@@ -19,7 +19,7 @@ description: "An arts-based nonprofit promoting mental wellness among school-age
 owner_name: John Mortensen
 github_username: jm1021 
 github_repo: "portfolio" 
-baseurl: "/portfolio" 
+baseurl: "" 
 future: true
 
 # Build settings
@@ -114,5 +114,7 @@ minima:
     - navigation/about.md
     - navigation/community.md
     - navigation/resources.md 
+    # Route to the existing OCS preferences panel.
+    - navigation/preferences.md
     - navigation/login.md
 

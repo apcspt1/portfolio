@@ -6,6 +6,19 @@ hide_title: true
 ---
 
 <div class="ocs__container ocs__mgb-about">
+  <section class="ocs__mgb-home-mission" aria-labelledby="mgb-mission-title">
+    <div class="ocs__mgb-home-mission-copy">
+      <p class="ocs__mgb-home-eyebrow">Our approach</p>
+      <h2 id="mgb-mission-title">Making space for big feelings, bright ideas, and growing minds.</h2>
+      <p>Through the vehicle of art and play, we help children from early childhood through adolescence practice healthy coping strategies for mental and emotional wellness.</p>
+      <a class="ocs__mgb-home-link" href="https://www.mygoodbrain.org/" target="_blank" rel="noopener noreferrer">Meet My Good Brain <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <figure class="ocs__mgb-home-quote">
+      <blockquote>“Art is as natural as sunshine and as vital as nourishment.”</blockquote>
+      <figcaption>MaryAnn F. Kohl</figcaption>
+    </figure>
+  </section>
+  
   <section class="ocs__mgb-about-hero" aria-labelledby="mgb-about-title">
     <img
       class="ocs__mgb-about-image"

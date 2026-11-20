@@ -389,8 +389,8 @@
     color: #716779 !important;
   }
 
-  .user-theme-active .ocs__resources .ocs__resource-card {
-    background: #ffffff !important;
-    color: #42334f !important;
+  html.user-theme-active & .ocs__resource-card {
+    background: var(--pref-bg-color) !important;
+    color: var(--pref-text-color) !important;
   }
 }
