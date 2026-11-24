@@ -19,7 +19,8 @@ class TopicsTest < Minitest::Test
     Dir.mktmpdir("topics-") do |source|
       ProjectPublisher.run("publish", PROJECT, source)
       ProjectPublisher.run("publish", File.join(ROOT, "_projects/systems/blogs"), source)
-      File.write(File.join(source, "_layouts/opencs.html"), "<main>{{ content }}</main>")
+      FileUtils.cp(File.join(ROOT, "_includes/page-viewer.html"), File.join(source, "_includes"))
+      File.write(File.join(source, "_layouts/opencs.html"), "{% for viewer in page.page_viewers %}{% include page-viewer.html viewer=viewer %}{% endfor %}<main>{{ content }}</main>")
       File.write(File.join(source, "_includes/course-document-player.html"), '<div id="course-player">{{ content }}</div>')
       FileUtils.cp(File.join(ROOT, "_includes/reading_time.html"), File.join(source, "_includes"))
       File.write(File.join(source, "lesson.md"), <<~DOC)
@@ -38,6 +39,11 @@ class TopicsTest < Minitest::Test
         Algorithm evidence.
         {% include_relative evidence.md %}
         <div class="code-runner-container">Interactive runner</div>
+
+        ```mermaid
+        graph TD
+          A --> B
+        ```
       DOC
       File.write(File.join(source, "evidence.md"), "**Relative evidence**")
       File.write(File.join(source, "outline.md"), <<~DOC)
@@ -64,12 +70,8 @@ class TopicsTest < Minitest::Test
         layout: opencs
         permalink: /course-browser/
         ---
-        {% include topics-browser.html course_context=true %}
+        {% include projects/topics/topics-browser.html course_context=true %}
       DOC
-      reference_includes = File.join(source, "_includes/projects/lessons")
-      FileUtils.mkdir_p(reference_includes)
-      FileUtils.cp(File.join(ROOT, "_projects/lessons/_includes/language-reference.html"), reference_includes)
-      FileUtils.cp(File.join(ROOT, "_projects/lessons/javascript/index.md"), File.join(source, "javascript-reference.md"))
       %w[hidden draft excluded].each do |kind|
         flag = { "hidden" => "hide: true", "draft" => "lesson_status: draft", "excluded" => "search_exclude: true" }.fetch(kind)
         File.write(File.join(source, "#{kind}.md"), "---\nlayout: post\ncategories: [Java]\n#{flag}\n---\nExcluded\n")
@@ -81,7 +83,7 @@ class TopicsTest < Minitest::Test
         "baseurl" => "/preview", "disqus" => {}
       ))
       site.process
-      index = JSON.parse(File.read(File.join(source, "_site/assets/js/topics/data.json")))
+      index = JSON.parse(File.read(File.join(source, "_site/assets/js/projects/topics/data.json")))
       assert_equal 3, index.size
       lesson = index.find { |entry| entry["url"] == "/java/algorithms/" }
       assert_equal %w[java algorithms], lesson["categories"]
@@ -91,30 +93,40 @@ class TopicsTest < Minitest::Test
       converted = index.find { |entry| entry["url"] == "/converted-quest/" }
       assert_equal "Quest-Outline.docx", converted["source"]
       assert_equal ["CSA week 14"], lesson["weeks"]
+      %w[lesson.md outline.md].each do |path|
+        source_page = site.pages.find { |page| page.relative_path == path }
+        assert_equal "topics_view", source_page.data.fetch("page_viewers").first.fetch("activation_param")
+      end
       assert_includes lesson["content"], "Algorithm evidence."
       original = File.read(File.join(source, "_site/java/algorithms/index.html"))
       assert_includes original, 'id="course-player"'
       topic = File.read(File.join(source, "_site/topics/view/java/algorithms/index.html"))
       refute_includes topic, 'id="course-player"'
-      assert_includes topic, "Interactive runner"
-      assert_includes topic, "<strong>Relative evidence</strong>"
-      assert_includes topic, 'id="algorithm-heading"'
-      assert_includes topic, "CURRENT_LESSON_ID_BLOG = \"/java/algorithms/\""
-      assert_includes topic, "/preview/topics/?category=java"
-      assert_includes topic, "/preview/assets/js/topics/document.js"
+      refute_includes topic, "Interactive runner"
+      refute_includes topic, "Algorithm evidence."
+      assert_includes topic, "/preview/java/algorithms/?context=topics"
+      assert_includes topic, "location.replace(target.href)"
+      assert_includes original, "Interactive runner"
+      assert_includes original, "<strong>Relative evidence</strong>"
+      assert_includes original, 'class="language-mermaid"'
+      assert_includes original, 'graph TD'
+      assert_includes original, 'data-viewer-param="topics_view"'
+      assert_includes original, "/preview/assets/js/pages/viewer/toolbar.js"
+      assert_includes original, "/preview/assets/js/projects/topics/viewer.js"
       outline = File.read(File.join(source, "_site/topics/view/csa/cs112/index.html"))
-      assert_includes outline, "Topics document navigation"
+      assert_includes outline, "/preview/csa/cs112/?context=topics"
       browser = File.read(File.join(source, "_site/topics/index.html"))
       assert_includes browser, "Java Algorithms"
-      assert_includes browser, "/preview/topics/view/java/algorithms/"
+      assert_includes browser, "/preview/java/algorithms/?context=topics"
       assert_includes browser, '<h2>Topics</h2>'
       assert_includes browser, '<summary><h3>Topic Filter</h3></summary>'
-      assert_includes browser, '<summary><h3>Categories Filter</h3></summary>'
+      assert_includes browser, '<summary><h3>More Categories</h3></summary>'
       primary = browser.split('<legend class="topics-browser__accessible-label">Topic Filter</legend>', 2).last.split('</fieldset>', 2).first
-      secondary = browser.split('<legend class="topics-browser__accessible-label">Categories Filter</legend>', 2).last.split('</fieldset>', 2).first
+      secondary = browser.split('<legend class="topics-browser__accessible-label">More Categories</legend>', 2).last.split('</fieldset>', 2).first
       assert_match(/<details[^>]*data-topics-primary[^>]*\bopen\b/, browser)
-      assert_match(/<details[^>]*data-topics-secondary/, browser)
-      refute_match(/<details[^>]*data-topics-secondary[^>]*\bopen\b/, browser)
+      assert_match(/<details[^>]*data-topics-secondary[^>]*\bopen\b/, browser)
+      refute_includes browser, 'data-topics-nav'
+      refute_includes browser, 'data-topics-shortcuts'
       match = browser.split('data-topics-match', 2).last.split('</p>', 2).first
       assert_match(/<button[^>]*class="ocs__btn small accent fill"[^>]*value="or"[^>]*aria-pressed="true"[^>]*disabled/, match)
       assert_match(/<button[^>]*class="ocs__btn small accent"[^>]*value="and"[^>]*aria-pressed="false"[^>]*disabled/, match)
@@ -127,11 +139,13 @@ class TopicsTest < Minitest::Test
       filter_box = browser.split('id="topics-filters"', 2).last.split('</div>', 2).first
       assert_includes filter_box, 'data-topics-clear'
       assert_match(/<button[^>]*data-topics-clear[^>]*\bdisabled\b/, filter_box)
-      assert_includes browser, '<label for="topics-view">View</label>'
-      assert_operator browser.index('id="topics-query"'), :<, browser.index('id="topics-view"')
+      assert_includes browser, '<label class="topics-browser__accessible-label" for="topics-view">View</label>'
+      assert_operator browser.index('id="topics-view"'), :<, browser.index('id="topics-query"')
       assert_operator browser.index('data-topics-clear'), :<, browser.index('data-topics-results')
       assert_includes browser, 'aria-controls="topics-filters"'
       assert_includes browser, 'data-topics-search-clear'
+      assert_includes browser, 'aria-label="Clear search"'
+      assert_includes browser, 'data-topics-bootstrap'
       assert_includes browser, 'data-topics-title-count'
       assert_includes browser, 'data-topics-body-count'
       %w[sass python java javascript flask spring cs111 cs112 cs113].each do |category|
@@ -145,24 +159,18 @@ class TopicsTest < Minitest::Test
       course_browser = File.read(File.join(source, "_site/course-browser/index.html"))
       assert_includes course_browser, "CSA week 14"
       assert_includes course_browser, 'href="/preview/java/algorithms/"'
-      reference = File.read(File.join(source, "_site/navigation/js-reference/index.html"))
-      assert_includes reference, 'id="course-player"'
-      assert_includes reference, 'data-course-context="true"'
-      assert_includes reference, 'data-initial-category="javascript"'
-      assert_includes reference, 'data-topics-match'
-      assert_includes reference, 'href="/preview/java/algorithms/"'
-      refute_includes reference, 'href="/preview/topics/view/java/algorithms/"'
     end
 
   end
 
   def test_primary_category_configuration_rejects_duplicates
     Dir.mktmpdir("topics-invalid-") do |source|
-      FileUtils.mkdir_p(File.join(source, "_data"))
-      File.write(File.join(source, "_data/topics_primary.yml"), "- Java\n- java\n")
+      FileUtils.mkdir_p(File.join(source, "_data/projects/topics"))
+      File.write(File.join(source, "_data/projects/topics/topics_primary.yml"), "- Java\n- java\n")
       site = Jekyll::Site.new(Jekyll.configuration("source" => source, "config" => [], "quiet" => true))
       site.read
-      assert_raises(Jekyll::Errors::FatalException) { Topics::Generator.new.generate(site) }
+      error = assert_raises(Jekyll::Errors::FatalException) { Topics::Generator.new.generate(site) }
+      assert_includes error.message, "_data/projects/topics/topics_primary.yml"
     end
   end
 end

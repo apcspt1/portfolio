@@ -16,13 +16,9 @@ categories: [Java, Algorithms]
 ```
 
 Categories are independent facets, not ordered parent/child declarations.
-Boxes in the same filter add to each other: Java plus Python shows every Java
-document and every Python document. In the Topic Filter, the AND button makes
-every checked topic required instead: Java AND Spring shows only documents tagged
-with both, and OR, the default, adds them again. Categories Filter boxes always
-add to each other. The Topic Filter and Categories Filter narrow each other: Java
-plus Algorithms shows only documents tagged with both. No new topic attribute or
-YAML topic inventory is required.
+OR, the default, includes documents matching any selected topic or category.
+AND requires every selected topic and category. No new topic attribute or YAML
+topic inventory is required.
 Document membership is discovered at build time from posts/pages.
 Hidden, draft and search-excluded documents are omitted.
 
@@ -34,26 +30,21 @@ JavaScript, Flask, Spring, CS111, CS112 and CS113.
 `/topics/` sets `full_width: true` (the base layout's existing full-width rule)
 and lays out with `ocs__split ocs__split--aside`, one column on phones:
 
-- **Sidebar:** Search; a Browse list (`ocs__tree`) of All topics and each primary
-  topic with published documents, each with an `ocs__status` count; More
-  categories, shortcut buttons for the twelve largest remaining categories; and a
-  collapsed Advanced filters disclosure.
-- **Landing (nothing chosen):** one `ocs__hub-card` tile per topic in an
-  `ocs__grid--card`, showing its lesson count and unit range.
-- **A chosen topic or category:** an `ocs__grid--col2` of unit cards. A lesson's
+- **Sidebar:** view selector, search, Topic Filter and More Categories.
+- **Landing and filtered browsing:** an `ocs__grid--col2` of unit cards. A lesson's
   unit comes from its title ("1.01 …", "Unit 2 Quiz"); lessons without one go to
   More lessons. [Unit names](data/topics_units.yml) are optional per topic. Each
   lesson is a `<details>` dropdown: number and title, then the full description
   and an Open lesson link. Quizzes, MCQs and FRQ practice become buttons in the
-  unit's Practice row. Several topics (Advanced filters) get one heading each,
+  unit's Practice row. Several topics get one heading each,
   and a document appears once, under its first topic in YAML order.
 - **Search:** title-match cards, then text matches, both within the filters.
 
-Advanced filters keeps the original controls. Topic Filter, expanded inside it,
-holds the primary topics with the OR/AND buttons; Categories Filter, collapsed,
-holds every remaining category. Both are multi-select with document counts.
-Clear Filters clears only topic/category selections, not the OR/AND choice;
-Clear Search clears only the query. Each clear button is dimmed and disabled when
+Topic Filter holds primary topics with OR/AND controls. More Categories shows
+remaining categories with at least five documents, plus selected low-count
+categories so they can be cleared. Both show document counts.
+CLEAR clears only topic/category selections, not the OR/AND choice;
+the search X clears only the query. Each clear button is dimmed and disabled when
 its corresponding selection is empty. The View selector (Compact list, the
 default, or Cards; `?view=cards`) picks lesson dropdowns or cards inside units.
 Both boxes filter `categories`; YAML controls prominence,
@@ -83,34 +74,32 @@ text DOM nodes rather than inserting document HTML.
 Category combinations, the AND choice (`match=and`), query and browsing view are
 shareable through URL parameters.
 
-Topics document routes under `/topics/view/` retain full interactive content,
-Runners and Submissions without activating the course player. Assignment identity
-uses the original document URL. Original document routes retain their course
-behavior. A Topics return link restores the selected filters/query/view; links
-to other indexed documents retain Topics context. An explicit original-context
-link is available.
+Topics opens the original document permalink with `?context=topics&topics_view=1`,
+not a copy of its content. The shared viewer provides a return link and previous
+and next controls using the displayed result order saved in session storage.
+Without that snapshot, stepping is unavailable. The return link restores
+filters and scroll position. Former `/topics/view/` routes remain compatibility
+redirects that retain filter parameters and fragments.
 
 Topics' browser include can also be hosted in a course page. It shows document
 week metadata there, but never uses weeks to define topic membership. Existing
 language-reference pages host the same browser with their category selected.
 
-Use `{% include topics-browser.html course_context=true %}` within a course
+Use `{% include projects/topics/topics-browser.html course_context=true %}` within a course
 document to show weeks and link to original course views. The ordinary include
-uses Topics views even when a reference page also carries course/week metadata.
-The shared language-reference include selects course context when the page has
-course metadata. Course reference sources use `layout: post` to retain the
-course player; `layout: opencs` bypasses that adapter.
+uses Topics context even when a reference page also carries course/week metadata.
+Portfolio does not require the Pages Courses reader.
 
 ## Resource map
 
 | Source | Published destination |
 | --- | --- |
-| `pages/` | Top-menu Topics landing and Search compatibility entry |
-| `plugins/topics.rb` | `_plugins/topics.rb`; builds category index and document views |
-| `data/topics_primary.yml` | `_data/topics_primary.yml`; ordered primary category names |
-| `data/topics_units.yml` | `_data/topics_units.yml`; optional unit names per topic |
-| `_includes/` | Shared Topics browser and document navigation |
-| `js/` | `assets/js/topics/`; search, filters, view and link context |
+| `pages/` | `navigation/projects/topics/`; Topics landing and Search compatibility entry |
+| `plugins/topics.rb` | `_plugins/projects/topics/topics.rb`; builds category index and legacy redirects |
+| `data/topics_primary.yml` | `_data/projects/topics/topics_primary.yml`; ordered primary category names |
+| `data/topics_units.yml` | `_data/projects/topics/topics_units.yml`; optional unit names per topic |
+| `_includes/` | `_includes/projects/topics/`; shared browser and document navigation |
+| `js/` | `assets/js/projects/topics/`; search, filters, view and link context |
 | `sass/main.scss` | Registered project style import |
 | `tests/` | Category, search, rendering and submission-identity regressions |
 
@@ -119,10 +108,17 @@ Makefile and [distribution manifest](distribution.json). Generated runtime
 copies are not authoring sources. No local npm setup is needed: Lunr is the
 existing shared vendor library.
 
+All outputs use the shared ignored `projects/<name>/` roots. YAML is available
+at `site.data.projects.topics`; plugins load recursively from `_plugins`.
+Explicit permalinks keep `/topics/` and `/search/` unchanged and keep these
+pages out of blog feeds. Publishing removes the previous root-level outputs
+using their distribution cache; do not delete that cache before migration.
+
 ## Validation
 
 ```sh
 bundle exec ruby scripts/test_topics.rb
+bundle exec ruby scripts/test_system_project_distribution.rb
 node --test tests/topics.test.mjs
 ```
 

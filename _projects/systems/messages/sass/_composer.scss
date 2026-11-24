@@ -1,0 +1,431 @@
+// The composer. js/thread.js injects assets/js/chat/rich-text.js's .rt-composer into
+// the form ahead of the Cancel and Send buttons, so the rt-* classes are styled here.
+// .rt-emoji-panel is attached to <body>, not to the form, and is styled globally in
+// _projects/systems/courses/sass/main.scss -- it is deliberately left alone.
+
+// The form is the box: one bordered field holding the formatting bar, the text, and
+// under them a single row with the controls at its right-hand end.
+// It wraps, and the editor asks for the whole first row, so the same rules lay out /dm
+// (Cancel, Attach, Send) and an embed (Cancel and Send alone) without either
+// needing to know what the other has. `order` puts the row in reading order whatever
+// order the controls come in: thread.js inserts the editor in front of Cancel.
+.dm__composer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--dm-space-xs);
+  flex: none;
+  flex-wrap: wrap;
+  margin: 0 var(--dm-gutter) var(--dm-space-md);
+  padding: 0 var(--dm-space-xs) var(--dm-space-xs);
+  border: 1px solid var(--dm-rule-strong);
+  border-radius: $radius-sm;
+  background: var(--dm-surface);
+  transition: border-color $transition-base ease, box-shadow $transition-base ease;
+
+  // The whole box answers for the editor inside it.
+  &:focus-within {
+    border-color: var(--dm-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dm-accent) 20%, transparent);
+  }
+}
+
+// Dragging files over the conversation covers it with where to let go. The pane is the
+// drop zone (js/composer-files.js); an embed has no pane-wide drop, so its composer is.
+.dm__thread {
+  position: relative;
+}
+
+.dm__drop-hint {
+  position: absolute;
+  inset: var(--dm-space-sm);
+  z-index: 6;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 2px dashed var(--dm-accent);
+  border-radius: $radius-sm;
+  background: color-mix(in srgb, var(--dm-accent) 14%, var(--dm-bg));
+  font-family: var(--dm-font);
+  font-size: $text-md;
+  font-weight: 600;
+  color: var(--dm-ink);
+  pointer-events: none;
+}
+
+.dm__thread.is-dragging .dm__drop-hint,
+.dm__composer.is-dragging .dm__drop-hint {
+  display: flex;
+}
+
+// The files waiting to be shared, above the composer: ocs__file rows (elements/files) under
+// a line that says what they come to, with Clear, or Cancel while they upload.
+.dm__tray {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--dm-space-xs);
+  max-height: 38vh;
+  overflow-y: auto;
+  margin: 0 var(--dm-gutter) var(--dm-space-xs);
+}
+
+// Side by side where there is room, like attachments in a mail.
+.dm__tray .ocs__file-list {
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.dm__tray-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dm-space-sm);
+}
+
+.dm__tray-title {
+  min-width: 0;
+  font-family: var(--dm-font);
+  font-size: $text-sm;
+  font-weight: 600;
+  color: var(--dm-ink);
+}
+
+.dm__tray-note {
+  font-size: $text-sm;
+  font-style: normal;
+  color: var(--dm-muted);
+}
+
+// Wider than the box's own padding, so the formatting bar's rule runs edge to edge.
+.dm .rt-composer {
+  order: 0;
+  min-width: 0;
+  flex: 1 0 calc(100% + var(--dm-space-xs) * 2);
+  margin-inline: calc(var(--dm-space-xs) * -1);
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.dm .rt-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+  padding: 0.3rem 0.4rem;
+  border-bottom: 1px solid var(--dm-rule);
+}
+
+.dm .rt-btn {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dm-radius-sm);
+  background: none;
+  font-size: $text-sm;
+  color: var(--dm-muted);
+  cursor: pointer;
+  transition: color $transition-fast ease, background-color $transition-fast ease;
+
+  &:hover,
+  &.is-active {
+    background: var(--dm-hover);
+    color: var(--dm-ink);
+  }
+
+  @include dm-focus-ring(-1px);
+}
+
+.dm .rt-select {
+  max-width: 7.5rem;
+  height: 1.75rem;
+  padding: 0 0.3rem;
+  border: 0;
+  border-radius: var(--dm-radius-sm);
+  background: none;
+  filter: none;
+  font-family: var(--dm-font);
+  font-size: $text-sm;
+  color: var(--dm-muted);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--dm-hover);
+    color: var(--dm-ink);
+  }
+
+  @include dm-focus-ring(-1px);
+}
+
+.dm .rt-sep {
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.25rem;
+  background: var(--dm-rule);
+}
+
+.dm .rt-editor {
+  max-height: 12rem;
+  min-height: 3.25rem;
+  overflow-y: auto;
+  padding: 0.7rem var(--dm-space-sm);
+  font-family: var(--dm-font);
+  font-size: $text-md;
+  line-height: 1.6;
+  color: var(--dm-ink);
+
+  &:empty::before {
+    content: attr(data-placeholder);
+    color: var(--dm-faint);
+  }
+
+  &:focus {
+    outline: none; // the ring sits on the box via :focus-within
+  }
+}
+
+// ── Attach ──────────────────────────────────────────────────────────────────────
+// The button, its hidden inputs, and the ocs__menu it opens, which rises above the composer.
+.dm__attach {
+  order: 2;
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+}
+
+// Anchored to the button's right edge: Attach sits at the composer's right end, so a menu
+// opening rightwards would leave a phone's screen.
+.dm__attach .ocs__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + var(--dm-space-sm));
+  z-index: 7;
+}
+
+.dm #messagesAttachButton i {
+  color: var(--dm-accent);
+}
+
+// The real file inputs, never drawn: the Attach menu clicks them.
+.dm__file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Cancel, which appears while editing a message.
+.dm .dm-cancel-edit {
+  order: 3;
+  flex: none;
+}
+
+// Send: the one filled control on the page, in the accent with the page colour on it,
+// the pairing every preset theme keeps readable.
+.dm .dm__send {
+  order: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: none;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--dm-accent);
+  border-radius: var(--dm-radius);
+  background: var(--dm-accent);
+  font-family: var(--dm-font);
+  font-size: $text-sm;
+  font-weight: 700;
+  line-height: 1.45;
+  // !important: a user theme sets `color: inherit !important` on every button
+  // (assets/js/user-preferences.js), which would put the text colour on the accent --
+  // maroon on blue in the Light preset. Page colour on accent is the readable pair.
+  color: var(--dm-bg) !important;
+  cursor: pointer;
+  transition: opacity $transition-fast ease;
+
+  i {
+    font-size: $text-xs;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.88;
+  }
+
+  // Nothing to send yet: the outline of the button, waiting.
+  &:disabled {
+    border-color: var(--dm-rule-strong);
+    background: transparent;
+    color: var(--dm-ink) !important;
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  @include dm-focus-ring;
+}
+
+// The image waiting to go with the next message, shown just above the composer.
+.dm__attach-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--dm-space-sm);
+  flex: none;
+  margin: 0 var(--dm-gutter) var(--dm-space-xs);
+
+  img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+    border: 1px solid var(--dm-rule-strong);
+    border-radius: var(--dm-radius);
+  }
+}
+
+// "Replying to …" above the composer (chat-reply.js's createReplyBar), with its Cancel.
+.dm .chat-reply-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--dm-space-sm);
+  flex: none;
+  margin: 0 var(--dm-gutter) var(--dm-space-xs);
+  padding: 0.35rem 0.4rem 0.35rem 0.7rem;
+  border-left: 3px solid var(--dm-accent);
+  border-radius: var(--dm-radius-sm);
+  background: var(--dm-surface);
+  font-family: var(--dm-font);
+
+  &[hidden] {
+    display: none;
+  }
+
+  > i {
+    flex: none;
+    color: var(--dm-accent);
+  }
+}
+
+.dm .chat-reply-bar-text {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+
+  b {
+    font-size: $text-xs;
+    font-weight: 600;
+    color: var(--dm-ink);
+  }
+
+  small {
+    overflow: hidden;
+    font-size: $text-sm;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include dm-quiet;
+  }
+}
+
+.dm .chat-reply-bar-cancel {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dm-radius-sm);
+  background: none;
+  font-size: $text-lg;
+  line-height: 1;
+  color: var(--dm-ink);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--dm-hover);
+  }
+
+  @include dm-focus-ring(-1px);
+}
+
+.dm__form-status {
+  flex: none;
+  margin: 0 var(--dm-gutter) var(--dm-space-md);
+  font-size: $text-sm;
+  line-height: 1.5;
+  color: var(--dm-ink);
+}
+
+// ── Slash commands ──────────────────────────────────────────────────────────────
+// The menu (the grammar's ocs__menu, elements/menus) rises from the composer's top edge.
+.dm__command-host {
+  position: absolute;
+  bottom: calc(100% + var(--dm-space-xs));
+  left: 0;
+  z-index: 8;
+  width: 100%;
+  pointer-events: none;
+}
+
+.dm__command-host .ocs__menu {
+  width: 100%;
+  max-width: 34rem;
+  pointer-events: auto;
+}
+
+// ── The code box (/code, /gist) ────────────────────────────────────────────────────
+.dm__code-box {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--dm-space-xs);
+  margin: 0 var(--dm-gutter) var(--dm-space-xs);
+}
+
+.dm__code-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--dm-space-xs);
+}
+
+.dm__code-title {
+  margin-right: auto;
+  font-family: var(--dm-font);
+  font-size: $text-sm;
+  color: var(--dm-ink);
+}
+
+// The box's fields name the box too: .dm .ocs__input (_dialogs.scss) gives every field the
+// whole row and the page's font, and it compiles after this file.
+.dm .dm__code-box .dm__code-language,
+.dm .dm__code-box .dm__code-filename {
+  width: auto;
+  min-width: 0;
+  padding: 0.3rem 0.5rem;
+  font-size: $text-sm;
+}
+
+.dm .dm__code-box .dm__code-filename {
+  flex: 0 1 14rem;
+}
+
+.dm .dm__code-box .dm__code-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 9rem;
+  max-height: 40vh;
+  resize: vertical;
+  font-family: $mono-font;
+  font-size: $text-sm;
+  line-height: 1.5;
+  tab-size: 2;
+  white-space: pre;
+}

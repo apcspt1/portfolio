@@ -4,6 +4,12 @@
 .ocs__table-wrap {
   width: 100%;
   overflow-x: auto;
+
+  // The wrap scrolls, so keep table layout: Minima turns every table into a
+  // scrolling block under 800px, which stops columns sharing the width.
+  > .ocs__table {
+    display: table;
+  }
 }
 
 .ocs__table {
@@ -31,6 +37,42 @@
     &:hover,
     &:nth-child(even):hover {
       background: color-mix(in srgb, var(--pref-accent-color) 10%, var(--panel));
+    }
+  }
+
+  // A compact list whose rows are separated rather than striped.
+  &.ocs__table--list {
+    margin: 0;
+    border: 0;
+    background: transparent;
+
+    tr,
+    tr:nth-child(even),
+    tbody tr:hover,
+    tbody tr:nth-child(even):hover {
+      background: transparent;
+    }
+
+    thead th {
+      @include kicker(0.7rem, 0.06em);
+      padding: 0.4rem 0.6rem;
+      border: 0;
+      border-bottom: 1px solid var(--ui-border);
+      background: transparent;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    tbody td {
+      padding: 0.75rem 0.6rem;
+      border: 0;
+      border-top: 1px solid var(--ui-border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tbody tr:first-child td {
+      border-top: 0;
     }
   }
 }

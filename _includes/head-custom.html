@@ -1,3 +1,7 @@
+<link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OCS">
+
 <!-- Favicon for browser tabs and bookmarks -->
 <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
 
@@ -73,8 +77,9 @@
         window.javaURI = "https://spring.opencodingsociety.com";
     }
 </script>
-<!-- OCS Analytics Tracking Script (loaded on every page) -->
-<script src="{{ site.baseurl }}/assets/js/ocs-analytics-tracker.js" defer></script>
+{%- comment -%} The tracker saves to Spring, so a Flask-only site (spring: false) leaves it out. {%- endcomment %}
+{% if site.spring != false %}<!-- OCS Analytics Tracking Script (loaded on every page) -->
+<script src="{{ site.baseurl }}/assets/js/ocs-analytics-tracker.js" defer></script>{% endif %}
 <!-- Keyboard Shortcuts (Alt+Shift+key navigation, loaded on every page) -->
 <script>window.baseurl = "{{ site.baseurl }}";</script>
 <script src="{{ site.baseurl }}/assets/js/keyboard-shortcuts.js" defer></script>

@@ -7,35 +7,37 @@ active_tab: calendar
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
 
-<div class="calendar-dashboard-tabs" role="tablist" aria-label="Calendar Dashboard Tabs">
-    <button type="button" class="dashboard-tab-btn active" data-dashboard-tab="calendar" role="tab" aria-selected="true">Calendar</button>
-    <button type="button" class="dashboard-tab-btn" data-dashboard-tab="cs-pathway" role="tab" aria-selected="false">CS Pathway</button>
-    <button type="button" class="dashboard-tab-btn" data-dashboard-tab="issues" role="tab" aria-selected="false">Issues</button>
-    <button type="button" class="dashboard-tab-btn" data-dashboard-tab="threads" role="tab" aria-selected="false">Threads</button>
+<div class="ocs__calendar-v2-page">
+
+<div class="ocs__calendar-v2-tabs calendar-dashboard-tabs" role="tablist" aria-label="Calendar Dashboard Tabs">
+    <button type="button" class="ocs__calendar-v2-tab-btn dashboard-tab-btn active" data-dashboard-tab="calendar" role="tab" aria-selected="true">Calendar</button>
+    <button type="button" class="ocs__calendar-v2-tab-btn dashboard-tab-btn" data-dashboard-tab="cs-pathway" role="tab" aria-selected="false">CS Pathway</button>
+    <button type="button" class="ocs__calendar-v2-tab-btn dashboard-tab-btn" data-dashboard-tab="issues" role="tab" aria-selected="false">Issues</button>
+    <button type="button" class="ocs__calendar-v2-tab-btn dashboard-tab-btn" data-dashboard-tab="threads" role="tab" aria-selected="false">Threads</button>
 </div>
 
-<section id="dashboard-panel-calendar" class="dashboard-panel" role="tabpanel" aria-label="Calendar Panel">
+<section id="dashboard-panel-calendar" class="ocs__calendar-v2-panel dashboard-panel" role="tabpanel" aria-label="Calendar Panel">
     <!-- FullCalendar Container -->
-    <div id="calendar-auth-banner" class="calendar-auth-banner">
+    <div id="calendar-auth-banner" class="ocs__calendar-v2-auth-banner calendar-auth-banner">
         <i class="fas fa-exclamation-triangle calendar-auth-banner-icon"></i>
         <span>Your session has expired. <a href="{{site.baseurl}}/login" class="calendar-auth-banner-link">Log in again</a> to view and manage your calendar events.</span>
     </div>
-    <p class="calendar-private-note">When you are signed in, the calendar shows your account's events. Use the <strong>CS Pathway</strong> tab or source filter for game tasks synced from your pathway start date (stored per user in Spring).</p>
-    <div class="calendar-source-chips" role="group" aria-label="Calendar source filters">
-        <button type="button" class="calendar-source-chip active" data-source-filter="all">All</button>
-        <button type="button" class="calendar-source-chip" data-source-filter="events">Events</button>
-        <button type="button" class="calendar-source-chip" data-source-filter="cs-pathway">CS Pathway</button>
-        <button type="button" class="calendar-source-chip" data-source-filter="issues">Issues</button>
-        <button type="button" class="calendar-source-chip" data-source-filter="breaks">Breaks</button>
+    <p class="ocs__text calendar-private-note">When you are signed in, the calendar shows your account's events. Use the <strong>CS Pathway</strong> tab or source filter for game tasks synced from your pathway start date (stored per user in Spring).</p>
+    <div class="ocs__calendar-v2-chips calendar-source-chips" role="group" aria-label="Calendar source filters">
+        <button type="button" class="ocs__calendar-v2-chip calendar-source-chip active" data-source-filter="all">All</button>
+        <button type="button" class="ocs__calendar-v2-chip calendar-source-chip" data-source-filter="events">Events</button>
+        <button type="button" class="ocs__calendar-v2-chip calendar-source-chip" data-source-filter="cs-pathway">CS Pathway</button>
+        <button type="button" class="ocs__calendar-v2-chip calendar-source-chip" data-source-filter="issues">Issues</button>
+        <button type="button" class="ocs__calendar-v2-chip calendar-source-chip" data-source-filter="breaks">Breaks</button>
     </div>
     <div class="calendar-controls-row">
         <label class="filter-field" for="calendar-filter-query">
-            <span class="filter-label">Search</span>
-            <input id="calendar-filter-query" type="search" placeholder="Search events, issues, or breaks" />
+            <span class="ocs__label filter-label">Search</span>
+            <input id="calendar-filter-query" type="search" class="ocs__input" placeholder="Search events, issues, or breaks" />
         </label>
         <label class="filter-field" for="calendar-filter-source">
-            <span class="filter-label">Source</span>
-            <select id="calendar-filter-source">
+            <span class="ocs__label filter-label">Source</span>
+            <select id="calendar-filter-source" class="ocs__input">
                 <option value="all">All sources</option>
                 <option value="events">Events</option>
                 <option value="cs-pathway">CS Pathway (game tasks)</option>
@@ -44,8 +46,8 @@ active_tab: calendar
             </select>
         </label>
         <label class="filter-field" for="calendar-filter-type">
-            <span class="filter-label">Type</span>
-            <select id="calendar-filter-type">
+            <span class="ocs__label filter-label">Type</span>
+            <select id="calendar-filter-type" class="ocs__input">
             <option value="">All types</option>
             <option value="event">Event</option>
             <option value="appointment">Appointment</option>
@@ -54,87 +56,90 @@ active_tab: calendar
             </select>
         </label>
         <label class="filter-field" for="calendar-filter-group">
-            <span class="filter-label">Group</span>
-            <select id="calendar-filter-group">
+            <span class="ocs__label filter-label">Group</span>
+            <select id="calendar-filter-group" class="ocs__input">
                 <option value="">All groups</option>
                 <option value="cs pathway">CS Pathway</option>
             </select>
         </label>
         <label class="filter-field filter-field--date" for="calendar-filter-start">
-            <span class="filter-label">Start date</span>
-            <input id="calendar-filter-start" type="date" title="Filter from date" />
+            <span class="ocs__label filter-label">Start date</span>
+            <input id="calendar-filter-start" type="date" class="ocs__input" title="Filter from date" />
         </label>
         <label class="filter-field filter-field--date" for="calendar-filter-end">
-            <span class="filter-label">End date</span>
-            <input id="calendar-filter-end" type="date" title="Filter to date" />
+            <span class="ocs__label filter-label">End date</span>
+            <input id="calendar-filter-end" type="date" class="ocs__input" title="Filter to date" />
         </label>
     </div>
     <div id="calendar" class="calendar-stage"></div>
 </section>
 
-<section id="dashboard-panel-cs-pathway" class="dashboard-panel hidden" role="tabpanel" aria-label="CS Pathway Tasks Panel">
-    <div class="calendar-cs-pathway-panel">
+<section id="dashboard-panel-cs-pathway" class="ocs__calendar-v2-panel dashboard-panel hidden" role="tabpanel" aria-label="CS Pathway Tasks Panel">
+    <div class="ocs__card ocs__calendar-v2-cs-pathway-panel calendar-cs-pathway-panel">
         <div class="calendar-cs-pathway-header">
-            <h2 class="calendar-cs-pathway-title">CS Pathway learning timeline</h2>
-            <p class="calendar-cs-pathway-subtitle">Personal game tasks from the CS Pathway quest. Only your account can see these on the calendar (Spring <code>calendar_events.individual</code> = your GitHub ID).</p>
+            <h2 class="ocs__section-title ocs__calendar-v2-cs-pathway-title calendar-cs-pathway-title">CS Pathway learning timeline</h2>
+            <p class="ocs__text calendar-cs-pathway-subtitle">Personal game tasks from the CS Pathway quest. Only your account can see these on the calendar (Spring <code>calendar_events.individual</code> = your GitHub ID).</p>
         </div>
-        <p id="cs-pathway-empty" class="calendar-cs-pathway-empty hidden">No CS Pathway tasks yet. Log in, play the pathway game, and complete Identity Terminal or Course Enlistment to auto-publish your timeline.</p>
+        <p id="cs-pathway-empty" class="ocs__text calendar-cs-pathway-empty hidden">No CS Pathway tasks yet. Log in, play the pathway game, and complete Identity Terminal or Course Enlistment to auto-publish your timeline.</p>
         <ul id="cs-pathway-task-list" class="calendar-cs-pathway-task-list" aria-live="polite"></ul>
-        <div class="calendar-cs-pathway-actions">
+        <div class="ocs__calendar-v2-btn-row calendar-cs-pathway-actions">
+            <!-- Buttons keep the shared calendar-issue-action-btn class/styling unchanged: it's reused by out-of-scope Issues/Threads content and reassigned dynamically for toasts, so it isn't converted here. See PR description. -->
             <button type="button" id="cs-pathway-show-calendar" class="calendar-issue-action-btn primary">Show on calendar</button>
             <button type="button" id="cs-pathway-clear-filters" class="calendar-issue-action-btn secondary">Show all events</button>
         </div>
     </div>
 </section>
 
-<section id="dashboard-panel-issues" class="dashboard-panel hidden" role="tabpanel" aria-label="Issues Panel">
-    <div id="calendar-issues-panel" class="calendar-issues-panel">
-        <div class="calendar-issues-header">
+<section id="dashboard-panel-issues" class="ocs__calendar-v2-panel dashboard-panel hidden" role="tabpanel" aria-label="Issues Panel">
+    <div id="calendar-issues-panel" class="ocs__card ocs__calendar-v2-issues-panel calendar-issues-panel">
+        <div class="ocs__card-header ocs__calendar-v2-panel-header calendar-issues-header">
             <div>
-                <h2 class="calendar-issues-title">Issues</h2>
-                <p class="calendar-issues-subtitle">GitHub-inspired issue tracking synced with calendar dates and event context.</p>
+                <h2 class="ocs__section-title calendar-issues-title">Issues</h2>
+                <p class="ocs__text calendar-issues-subtitle">GitHub-inspired issue tracking synced with calendar dates and event context.</p>
             </div>
+            <!-- calendar-issue-action-btn left unchanged, see note above -->
             <button id="issues-new-btn" class="calendar-issue-action-btn primary" type="button">New Issue</button>
         </div>
 
         <div class="issues-controls-row">
-            <input id="issues-filter-query" type="search" placeholder="Search title, description, tags" />
-            <select id="issues-filter-status">
+            <input id="issues-filter-query" type="search" class="ocs__input" placeholder="Search title, description, tags" />
+            <select id="issues-filter-status" class="ocs__input">
                 <option value="">All statuses</option>
                 <option value="open">Open</option>
                 <option value="in-progress">In Progress</option>
                 <option value="blocked">Blocked</option>
                 <option value="done">Done</option>
             </select>
-            <select id="issues-filter-priority">
+            <select id="issues-filter-priority" class="ocs__input">
                 <option value="">All priorities</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <input id="issues-filter-author" type="search" placeholder="Filter by author" />
-            <input id="issues-filter-tags" type="search" placeholder="Filter by tags" />
-            <select id="issues-filter-group" class="filter-field">
+            <input id="issues-filter-author" type="search" class="ocs__input" placeholder="Filter by author" />
+            <input id="issues-filter-tags" type="search" class="ocs__input" placeholder="Filter by tags" />
+            <select id="issues-filter-group" class="ocs__input filter-field">
                 <option value="">All groups</option>
             </select>
             <label class="filter-field filter-field--date" for="issues-filter-date">
-                <span class="filter-label">Due date</span>
-                <input id="issues-filter-date" type="date" title="Filter by due date" />
+                <span class="ocs__label filter-label">Due date</span>
+                <input id="issues-filter-date" type="date" class="ocs__input" title="Filter by due date" />
             </label>
             <label class="filter-field filter-field--date" for="issues-filter-start">
-                <span class="filter-label">Created after</span>
-                <input id="issues-filter-start" type="date" title="Created on or after" />
+                <span class="ocs__label filter-label">Created after</span>
+                <input id="issues-filter-start" type="date" class="ocs__input" title="Created on or after" />
             </label>
             <label class="filter-field filter-field--date" for="issues-filter-end">
-                <span class="filter-label">Created before</span>
-                <input id="issues-filter-end" type="date" title="Created on or before" />
+                <span class="ocs__label filter-label">Created before</span>
+                <input id="issues-filter-end" type="date" class="ocs__input" title="Created on or before" />
             </label>
         </div>
 
-        <div class="issues-subtabs" role="tablist" aria-label="Issue Views">
-            <button type="button" class="issues-subtab-btn active" data-issues-subtab="create" role="tab" aria-selected="true">Create / Edit</button>
-            <button type="button" class="issues-subtab-btn" data-issues-subtab="list" role="tab" aria-selected="false">List</button>
-            <button type="button" class="issues-subtab-btn" data-issues-subtab="kanban" role="tab" aria-selected="false">Kanban</button>
+        <!-- Issues subtabs bar: chrome converted. The three subpanels below (Create/Edit form, List, Kanban) are out of scope -- deep bespoke feature content, left exactly as-is. See PR description. -->
+        <div class="ocs__calendar-v2-tabs issues-subtabs" role="tablist" aria-label="Issue Views">
+            <button type="button" class="ocs__calendar-v2-tab-btn issues-subtab-btn active" data-issues-subtab="create" role="tab" aria-selected="true">Create / Edit</button>
+            <button type="button" class="ocs__calendar-v2-tab-btn issues-subtab-btn" data-issues-subtab="list" role="tab" aria-selected="false">List</button>
+            <button type="button" class="ocs__calendar-v2-tab-btn issues-subtab-btn" data-issues-subtab="kanban" role="tab" aria-selected="false">Kanban</button>
         </div>
 
         <div id="issues-subpanel-create" class="issues-subpanel">
@@ -219,43 +224,43 @@ active_tab: calendar
     </div>
 </section>
 
-<section id="dashboard-panel-threads" class="dashboard-panel hidden" role="tabpanel" aria-label="Message Threads Panel">
-    <div id="calendar-threads-panel" class="calendar-issues-panel">
-        <div class="calendar-issues-header">
+<section id="dashboard-panel-threads" class="ocs__calendar-v2-panel dashboard-panel hidden" role="tabpanel" aria-label="Message Threads Panel">
+    <div id="calendar-threads-panel" class="ocs__card ocs__calendar-v2-issues-panel calendar-issues-panel">
+        <div class="ocs__card-header ocs__calendar-v2-panel-header calendar-issues-header">
             <div>
-                <h2 class="calendar-issues-title">Issue Threads</h2>
-                <p class="calendar-issues-subtitle">Replies, suggestions, and follow-ups attached directly to issues.</p>
+                <h2 class="ocs__section-title calendar-issues-title">Issue Threads</h2>
+                <p class="ocs__text calendar-issues-subtitle">Replies, suggestions, and follow-ups attached directly to issues.</p>
             </div>
         </div>
 
         <div class="issues-controls-row">
-            <input id="threads-filter-query" type="search" placeholder="Search issue title or reply text" />
-            <input id="threads-filter-channel" type="search" placeholder="Filter by issue" />
-            <input id="threads-filter-author" type="search" placeholder="Filter by author" />
+            <input id="threads-filter-query" type="search" class="ocs__input" placeholder="Search issue title or reply text" />
+            <input id="threads-filter-channel" type="search" class="ocs__input" placeholder="Filter by issue" />
+            <input id="threads-filter-author" type="search" class="ocs__input" placeholder="Filter by author" />
             <label class="filter-field filter-field--date" for="threads-filter-start">
-                <span class="filter-label">From time</span>
-                <input id="threads-filter-start" type="datetime-local" title="From timestamp" />
+                <span class="ocs__label filter-label">From time</span>
+                <input id="threads-filter-start" type="datetime-local" class="ocs__input" title="From timestamp" />
             </label>
             <label class="filter-field filter-field--date" for="threads-filter-end">
-                <span class="filter-label">To time</span>
-                <input id="threads-filter-end" type="datetime-local" title="To timestamp" />
+                <span class="ocs__label filter-label">To time</span>
+                <input id="threads-filter-end" type="datetime-local" class="ocs__input" title="To timestamp" />
             </label>
             <label class="calendar-issue-filter-toggle">
                 <input id="threads-filter-only-threads" type="checkbox" />
                 <span>With replies only</span>
             </label>
-            <input id="threads-filter-limit" type="number" min="1" max="500" value="100" />
+            <input id="threads-filter-limit" type="number" class="ocs__input" min="1" max="500" value="100" />
         </div>
 
         <div id="threads-list" class="issues-list"></div>
     </div>
 </section>
 <!-- Modal -->
-<div id="eventModal" class="calendar-event-modal">
-    <div class="calendar-event-modal-content modal-content">
-        <span class="calendar-event-modal-close" id="closeModal">&times;</span>
+<div id="eventModal" class="ocs__modal ocs__calendar-v2-modal calendar-event-modal">
+    <div class="ocs__card ocs__modal-card ocs__calendar-v2-modal-content calendar-event-modal-content modal-content">
+        <span class="ocs__modal-close ocs__calendar-v2-modal-close calendar-event-modal-close" id="closeModal">&times;</span>
         <div class="calendar-event-modal-body">
-            <h2 id="eventTitle" class="calendar-event-modal-title"></h2>
+            <h2 id="eventTitle" class="ocs__section-title ocs__modal-title calendar-event-modal-title"></h2>
             <label for="editEventType" class="calendar-event-modal-label">Type:</label>
             <select id="editEventType" disabled class="calendar-event-modal-field">
                 <option value="event">Event</option>
@@ -276,6 +281,9 @@ active_tab: calendar
                 {% for doc in site.data.topics_catalog %}<option value="{{ doc.url | relative_url | escape }}">{{ doc.title | escape }}</option>
                 {% endfor %}
             </datalist>
+            <label for="editAlertDays" id="editAlertLabel" class="calendar-event-modal-label">Ticker alert:</label>
+            <p id="editAlertDisplay" class="calendar-event-modal-field calendar-event-modal-display"></p>
+            <input type="text" id="editAlertDays" inputmode="numeric" class="calendar-event-modal-field issue-form-date-hidden" data-max-days="{{ site.calendar_ticker.alert_limit_days | default: 30 }}" placeholder="Days before the event, or blank for the default" autocomplete="off">
             <label for="editPriority" class="calendar-event-modal-label">Priority:</label>
             <select id="editPriority" disabled class="calendar-event-modal-field">
                 <option value="P0">P0 - Critical</option>
@@ -289,7 +297,7 @@ active_tab: calendar
                 <!-- Options populated dynamically from user's groups -->
             </select>
         </div>
-        <div class="calendar-event-modal-actions modal-actions">
+        <div class="ocs__modal-actions calendar-event-modal-actions modal-actions">
             <button id="saveButton" class="calendar-event-modal-button primary hidden">Save Changes</button>
             <button id="makeBreakButton" class="calendar-event-modal-button warning hidden">Make Break</button>
             <button id="deleteButton" class="calendar-event-modal-button danger">Delete Event</button>
@@ -298,11 +306,11 @@ active_tab: calendar
     </div>
 </div>
 
-<div id="issueModal" class="issue-modal" aria-hidden="true" role="dialog" aria-label="Issue Details">
-    <div class="issue-modal-content">
-        <div class="issue-modal-header">
-            <h3 id="issue-modal-title" class="issue-modal-title">Issue</h3>
-            <button id="issue-modal-close" class="issue-modal-close" type="button" aria-label="Close Issue Modal">&times;</button>
+<div id="issueModal" class="ocs__modal ocs__calendar-v2-modal issue-modal" aria-hidden="true" role="dialog" aria-label="Issue Details">
+    <div class="ocs__card ocs__modal-card ocs__calendar-v2-modal-content issue-modal-content">
+        <div class="ocs__modal-header issue-modal-header">
+            <h3 id="issue-modal-title" class="ocs__modal-title issue-modal-title">Issue</h3>
+            <button id="issue-modal-close" class="ocs__calendar-v2-modal-close issue-modal-close" type="button" aria-label="Close Issue Modal">&times;</button>
         </div>
         <div id="issue-modal-meta" class="issue-modal-meta"></div>
         <div id="issue-modal-description" class="issue-markdown-preview issue-modal-description"></div>
@@ -319,7 +327,7 @@ active_tab: calendar
                 <button id="issue-comment-submit" type="button" class="calendar-issue-action-btn primary">Post Reply</button>
             </div>
         </div>
-        <div class="issue-modal-actions">
+        <div class="ocs__modal-actions issue-modal-actions">
             <button id="issue-modal-copy-link" type="button" class="calendar-issue-action-btn secondary">Copy Link</button>
             <button id="issue-modal-star" type="button" class="calendar-issue-action-btn secondary">Star</button>
             <button id="issue-modal-edit" type="button" class="calendar-issue-action-btn secondary">Edit</button>
@@ -329,19 +337,21 @@ active_tab: calendar
 </div>
 
 <!-- Reply Modal (for nested replies) -->
-<div id="replyModal" class="reply-modal" aria-hidden="true" role="dialog" aria-label="Reply to Comment">
-    <div class="reply-modal-content">
-        <div class="reply-modal-header">
-            <h4 id="reply-modal-title">Reply</h4>
-            <button id="reply-modal-close" class="reply-modal-close" type="button" aria-label="Close Reply Modal">&times;</button>
+<div id="replyModal" class="ocs__modal ocs__calendar-v2-modal ocs__calendar-v2-reply-modal reply-modal" aria-hidden="true" role="dialog" aria-label="Reply to Comment">
+    <div class="ocs__card ocs__modal-card ocs__calendar-v2-modal-content reply-modal-content">
+        <div class="ocs__modal-header reply-modal-header">
+            <h4 id="reply-modal-title" class="ocs__modal-title">Reply</h4>
+            <button id="reply-modal-close" class="ocs__calendar-v2-modal-close reply-modal-close" type="button" aria-label="Close Reply Modal">&times;</button>
         </div>
         <div id="reply-parent-preview" class="reply-parent-preview"></div>
         <textarea id="reply-modal-text" placeholder="Write your reply"></textarea>
-        <div class="reply-modal-actions">
+        <div class="ocs__modal-actions reply-modal-actions">
             <button id="reply-modal-submit" class="calendar-issue-action-btn primary" type="button">Post Reply</button>
             <button id="reply-modal-cancel" class="calendar-issue-action-btn secondary" type="button">Cancel</button>
         </div>
     </div>
+</div>
+
 </div>
 
 <!-- FullCalendar JS -->
@@ -351,6 +361,8 @@ active_tab: calendar
 <script type="module">
     import { javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
     import { normalizeDocUrl, splitLinkedDoc, joinLinkedDoc, readDocLaunchParams } from '{{site.baseurl}}/assets/js/projects/calendar/CalendarDocLinks.js';
+    import { CalendarSafeHtml } from '{{site.baseurl}}/assets/js/projects/calendar/CalendarSafeHtml.js';
+    import { CalendarAlerts } from '{{site.baseurl}}/assets/js/projects/calendar/CalendarAlerts.js';
 
     // ─── Auth helpers ───────────────────────────────────────────────
     let javaAuthenticated = true;
@@ -476,12 +488,12 @@ active_tab: calendar
             const level = levelMatch ? levelMatch[1].trim() : 'CS Pathway';
             return `<li class="calendar-cs-pathway-task">
                 <div class="calendar-cs-pathway-task-meta">
-                    <span class="calendar-cs-pathway-task-priority priority-${String(priority).toLowerCase()}">${priority}</span>
-                    <span class="calendar-cs-pathway-task-date">${due}</span>
-                    <span class="calendar-cs-pathway-task-level">${level}</span>
+                    <span class="calendar-cs-pathway-task-priority priority-${CalendarSafeHtml.escape(String(priority).toLowerCase())}">${CalendarSafeHtml.escape(priority)}</span>
+                    <span class="calendar-cs-pathway-task-date">${CalendarSafeHtml.escape(due)}</span>
+                    <span class="calendar-cs-pathway-task-level">${CalendarSafeHtml.escape(level)}</span>
                 </div>
-                <strong class="calendar-cs-pathway-task-title">${task.title || 'Untitled task'}</strong>
-                <p class="calendar-cs-pathway-task-desc">${(task.description || ext.description || '').replace(/\n/g, '<br>')}</p>
+                <strong class="calendar-cs-pathway-task-title">${CalendarSafeHtml.escape(task.title || 'Untitled task')}</strong>
+                <p class="calendar-cs-pathway-task-desc">${CalendarSafeHtml.clean((task.description || ext.description || '').replace(/\n/g, '<br>'))}</p>
             </li>`;
         }).join('');
     }
@@ -978,6 +990,28 @@ active_tab: calendar
             document.getElementById('editDocDisplay').style.display = editable ? 'none' : 'block';
             document.getElementById('editDocUrl').style.display = editable ? 'block' : 'none';
         }
+        // The ticker alert: how many days before its date the course home's ticker shows the event.
+        // Breaks never show on the ticker, so a break's window leaves the field out.
+        let alertFieldShown = true;
+        function showAlert(days) {
+            document.getElementById('editAlertDisplay').textContent = CalendarAlerts.describe(days);
+            document.getElementById('editAlertDays').value = days === null ? '' : String(days);
+        }
+        function setAlertFieldShown(shown) {
+            alertFieldShown = shown;
+            document.getElementById('editAlertLabel').style.display = shown ? '' : 'none';
+            setAlertFieldEditable(false);
+        }
+        function setAlertFieldEditable(editable) {
+            document.getElementById('editAlertDisplay').style.display = alertFieldShown && !editable ? 'block' : 'none';
+            document.getElementById('editAlertDays').style.display = alertFieldShown && editable ? 'block' : 'none';
+        }
+        // The description's own text, its linked doc and its ticker alert (each has its own field).
+        function descriptionParts(description) {
+            const { body: text, docUrl } = splitLinkedDoc(description, window.location.origin);
+            const { body, days } = CalendarAlerts.split(text);
+            return { body, docUrl, days };
+        }
         // Accepts a doc picked from the list, a pasted link, or a doc title typed in full.
         // Returns '' for no doc and null for text that is not a link.
         function readDocInput() {
@@ -1193,13 +1227,13 @@ active_tab: calendar
                 const assignedLabel = (() => {
                     try {
                         if (Array.isArray(issue.assignedGroupLabels) && issue.assignedGroupLabels.length) {
-                            return `<div class="issue-assigned-groups">📍 ${issue.assignedGroupLabels.join(', ')}</div>`;
+                            return `<div class="issue-assigned-groups">📍 ${CalendarSafeHtml.escape(issue.assignedGroupLabels.join(', '))}</div>`;
                         }
                         if (issue.assignedGroups) {
                             const ag = typeof issue.assignedGroups === 'string' ? JSON.parse(issue.assignedGroups) : issue.assignedGroups;
                             if (Array.isArray(ag) && ag.length) {
                                 const labels = ag.map(id => (window.allGroupsById && window.allGroupsById[String(id)]) || String(id));
-                                return `<div class="issue-assigned-groups">📍 ${labels.join(', ')}</div>`;
+                                return `<div class="issue-assigned-groups">📍 ${CalendarSafeHtml.escape(labels.join(', '))}</div>`;
                             }
                         }
                     } catch (e) { }
@@ -1258,13 +1292,13 @@ active_tab: calendar
                             const assignedLabelInner = (() => {
                                 try {
                                     if (Array.isArray(issue.assignedGroupLabels) && issue.assignedGroupLabels.length) {
-                                        return `<div class="issue-assigned-groups">📍 ${issue.assignedGroupLabels.join(', ')}</div>`;
+                                        return `<div class="issue-assigned-groups">📍 ${CalendarSafeHtml.escape(issue.assignedGroupLabels.join(', '))}</div>`;
                                     }
                                     if (issue.assignedGroups) {
                                         const ag = typeof issue.assignedGroups === 'string' ? JSON.parse(issue.assignedGroups) : issue.assignedGroups;
                                         if (Array.isArray(ag) && ag.length) {
                                             const labels = ag.map(id => (window.allGroupsById && window.allGroupsById[String(id)]) || String(id));
-                                            return `<div class="issue-assigned-groups">📍 ${labels.join(', ')}</div>`;
+                                            return `<div class="issue-assigned-groups">📍 ${CalendarSafeHtml.escape(labels.join(', '))}</div>`;
                                         }
                                     }
                                 } catch (e) { }
@@ -1694,28 +1728,28 @@ active_tab: calendar
                         const title = event.title || '';
                         const groupName = ext.groupName || '';
                         let html = '<div class="fc-event-appointment">';
-                        if (individual) html += '<div class="fc-event-individual">' + individual + '</div>';
-                        html += '<div class="fc-event-title-custom">' + title + '</div>';
-                        if (groupName) html += '<div class="fc-event-group">' + groupName + '</div>';
+                        if (individual) html += '<div class="fc-event-individual">' + CalendarSafeHtml.escape(individual) + '</div>';
+                        html += '<div class="fc-event-title-custom">' + CalendarSafeHtml.escape(title) + '</div>';
+                        if (groupName) html += '<div class="fc-event-group">' + CalendarSafeHtml.escape(groupName) + '</div>';
                         html += '</div>';
                         return { html };
                     }
                     if (isIssue && !isBreak) {
                         let html = '<div class="fc-event-issue">';
                         const titleText = (event.title || 'Issue').replace(/^Issue:\s*/, '');
-                        html += '<div class="fc-event-title-custom" title="' + titleText + '" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + titleText + '</div>';
-                        if (ext.author) html += '<div class="fc-event-individual">' + ext.author + '</div>';
+                        html += '<div class="fc-event-title-custom" title="' + CalendarSafeHtml.escape(titleText) + '" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + CalendarSafeHtml.escape(titleText) + '</div>';
+                        if (ext.author) html += '<div class="fc-event-individual">' + CalendarSafeHtml.escape(ext.author) + '</div>';
                         // Show assigned groups if available (use lookup map if present)
                                 try {
                                     if (Array.isArray(ext.assignedGroupLabels) && ext.assignedGroupLabels.length) {
-                                        html += '<div class="fc-event-group">' + ext.assignedGroupLabels.join(', ') + '</div>';
+                                        html += '<div class="fc-event-group">' + CalendarSafeHtml.escape(ext.assignedGroupLabels.join(', ')) + '</div>';
                                     } else {
                                         const agRaw = ext.assignedGroups || event.assignedGroups || null;
                                         if (agRaw) {
                                             const ag = typeof agRaw === 'string' ? JSON.parse(agRaw) : agRaw;
                                             if (Array.isArray(ag) && ag.length) {
                                                 const labels = ag.map(id => (window.allGroupsById && window.allGroupsById[String(id)]) || String(id));
-                                                html += '<div class="fc-event-group">' + labels.join(', ') + '</div>';
+                                                html += '<div class="fc-event-group">' + CalendarSafeHtml.escape(labels.join(', ')) + '</div>';
                                             }
                                         }
                                     }
@@ -1746,9 +1780,11 @@ active_tab: calendar
                     document.getElementById('eventTitle').textContent = displayTitle;
                     // Edit mode reads the title from this field, so it must hold the event's title
                     document.getElementById('editTitle').textContent = displayTitle;
-                    const { body, docUrl } = splitLinkedDoc(currentEvent.extendedProps.description, window.location.origin);
-                    document.getElementById('editDescription').innerHTML = slackToHtml(body);
+                    const { body, docUrl, days } = descriptionParts(currentEvent.extendedProps.description);
+                    document.getElementById('editDescription').innerHTML = CalendarSafeHtml.clean(slackToHtml(body));
                     showLinkedDoc(docUrl);
+                    showAlert(days);
+                    setAlertFieldShown(!isBreak);
                     document.getElementById('editDateDisplay').textContent = formatDisplayDate(currentEvent.start);
                     document.getElementById('editDate').value = formatDate(currentEvent.start);
                     document.getElementById("editPriority").value = currentEvent.extendedProps.priority || "P2";
@@ -1829,6 +1865,7 @@ active_tab: calendar
             document.getElementById("editEventType").disabled = true;
             document.getElementById("editGroupName").disabled = true;
             setDocFieldEditable(false);
+            setAlertFieldEditable(false);
         }
         function closeModal() {
             leaveEditMode();
@@ -1868,6 +1905,9 @@ active_tab: calendar
             selectEventGroup('');
             showLinkedDoc(docUrl);
             setDocFieldEditable(true);
+            showAlert(null);
+            setAlertFieldShown(true);
+            setAlertFieldEditable(true);
             document.getElementById('editDateDisplay').textContent = formatDisplayDate(date);
             document.getElementById('editDate').value = formatDate(date);
             document.getElementById('editDateDisplay').style.display = pickDate ? 'none' : 'block';
@@ -1914,9 +1954,20 @@ active_tab: calendar
                 alert("Linked Doc must be a doc from the list or a web link (https://...).");
                 return null;
             }
+            // The box stops at calendar_ticker's alert_limit_days, as far ahead as the ticker looks for alerts.
+            // A break's box is hidden, so whatever line its description already has is kept as it is.
+            const alertBox = document.getElementById('editAlertDays');
+            let alertDays;
+            try {
+                alertDays = CalendarAlerts.parse(alertBox.value, alertFieldShown ? Number(alertBox.dataset.maxDays) : CalendarAlerts.MAX_DAYS);
+            } catch (error) {
+                alert(`${error.message} Leave it blank to use the default.`);
+                return null;
+            }
             const form = {
                 title: document.getElementById("editTitle").textContent.trim(),
-                description: joinLinkedDoc(document.getElementById("editDescription").innerHTML, docUrl),
+                // The alert line goes before the doc line, which stays last.
+                description: joinLinkedDoc(CalendarAlerts.join(CalendarSafeHtml.editorHtml(document.getElementById("editDescription")), alertDays), docUrl),
                 date: document.getElementById("editDate").value,
                 priority: document.getElementById("editPriority").value,
                 type: document.getElementById("editEventType").value,
@@ -2025,8 +2076,9 @@ active_tab: calendar
                 document.getElementById("editGroupName").disabled = false;
             }
             setDocFieldEditable(true);
-            // Edit the raw text; the linked doc has its own field
-            document.getElementById("editDescription").innerHTML = splitLinkedDoc(currentEvent.extendedProps.description, window.location.origin).body;
+            setAlertFieldEditable(true);
+            // Edit the raw text; the linked doc and the ticker alert have their own fields
+            document.getElementById("editDescription").innerHTML = CalendarSafeHtml.clean(descriptionParts(currentEvent.extendedProps.description).body);
             document.getElementById("editTitle").focus();
         };
 
@@ -2049,7 +2101,7 @@ active_tab: calendar
         document.getElementById("makeBreakButton").onclick = function () {
             const breakDate = document.getElementById("editDate").value;
             const breakTitle = document.getElementById("editTitle").innerHTML.trim();
-            const breakDescription = document.getElementById("editDescription").innerHTML;
+            const breakDescription = CalendarSafeHtml.editorHtml(document.getElementById("editDescription"));
             if (!breakDate) { alert("Please select a date for the break!"); return; }
             if (!breakTitle) { alert("Please enter a name for the break!"); return; }
             if (isBreakDay(breakDate)) { alert(`There is already a break on that date.`); return; }

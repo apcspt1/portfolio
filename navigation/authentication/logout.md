@@ -2,13 +2,20 @@
 layout: opencs
 title: Logout
 permalink: /logout
-search_exclude: True
+search_exclude: true
 ---
 
 <script type="module">
+    import { pythonURI, javaURI, fetchOptions, springEnabled } from '{{site.baseurl}}/assets/js/api/config.js';
+    import { createBackends } from '{{site.baseurl}}/assets/js/login/backend.js';
+    import { createSession } from '{{site.baseurl}}/assets/js/login/session.js';
     import { handleLogout } from '{{site.baseurl}}/assets/js/api/logout.js';
+    import { forgetPushOnSignOut } from '{{site.baseurl}}/assets/js/api/push-notifications.js';
+    // turn off this browser's direct-message notifications while Spring still knows who is
+    // leaving (bounded, never blocks the sign-out)
+    await forgetPushOnSignOut().catch(error => console.warn('Could not clear push notifications:', error));
     // logout
-    await handleLogout();
+    await handleLogout(createSession(createBackends({ pythonURI, javaURI, fetchOptions, springEnabled })));
     // redirect to login page
     window.location.href = "{{site.baseurl}}/login";
 </script>
