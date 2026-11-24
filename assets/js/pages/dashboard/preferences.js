@@ -29,7 +29,7 @@ export class PreferencesConfig {
     static SITE_DEFAULT = {
         bg: '#fcfaff',
         text: '#382e47',
-        font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+        font: "'Poppins', sans-serif",
         size: 14,
         accent: '#7653b3'
     };

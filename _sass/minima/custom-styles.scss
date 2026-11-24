@@ -31,3 +31,26 @@
 
 // FRQ Interactive Lesson Styles (popcorn hacks, drag-drop, visualizer, quiz, game)
 @import "nighthawk/frq-interactive";
+
+// Keep site text consistent; preserve dedicated code and icon font glyphs.
+html body,
+html body * {
+    font-family: "Poppins", sans-serif !important;
+}
+
+html body :is(pre, code, kbd, samp),
+html body :is(pre, code, kbd, samp) * {
+    font-family: "Source Code Pro", monospace !important;
+}
+
+html body :is(.fa-solid, .fas, .fa-regular, .far, [class^="fa-solid"], [class*=" fa-solid"], [class^="fa-regular"], [class*=" fa-regular"]) {
+    font-family: "Font Awesome 6 Free" !important;
+}
+
+html body :is(.fa-brands, .fab, [class^="fa-brands"], [class*=" fa-brands"]) {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+html body :is(.bi, [class^="bi-"], [class*=" bi-"]) {
+    font-family: "bootstrap-icons" !important;
+}
