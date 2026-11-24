@@ -12,27 +12,14 @@ permalink: /
       alt="A group of children sitting together in a classroom"
       fetchpriority="high">
     <div class="ocs__mgb-home-banner-copy">
-      <p class="ocs__mgb-home-eyebrow">Bridging psychology &amp; art</p>
-      <h1 id="mgb-home-title">My Good <span>Brain</span></h1>
+      <p class="ocs__mgb-home-eyebrow">My Good Brain&amp;</p>
+      <h1 id="mgb-home-title">Bridging <span>pyschology</span> and <span>art</span></h1>
       <p class="ocs__mgb-home-banner-lead">
         An arts-based nonprofit helping school-aged youth practice healthy coping strategies through art and play.
       </p>
       <a class="ocs__mgb-home-link ocs__mgb-home-link--light" href="#programs">Explore our programs <span aria-hidden="true">&rarr;</span></a>
     </div>
     <a class="ocs__mgb-home-banner-credit" href="https://www.mygoodbrain.org/" target="_blank" rel="noopener noreferrer">A little more good, together <span aria-hidden="true">&nearr;</span></a>
-  </section>
-
-  <section class="ocs__mgb-home-mission" aria-labelledby="mgb-mission-title">
-    <div class="ocs__mgb-home-mission-copy">
-      <p class="ocs__mgb-home-eyebrow">Our approach</p>
-      <h2 id="mgb-mission-title">Making space for big feelings, bright ideas, and growing minds.</h2>
-      <p>Through the vehicle of art and play, we help children from early childhood through adolescence practice healthy coping strategies for mental and emotional wellness.</p>
-      <a class="ocs__mgb-home-link" href="https://www.mygoodbrain.org/" target="_blank" rel="noopener noreferrer">Meet My Good Brain <span aria-hidden="true">&rarr;</span></a>
-    </div>
-    <figure class="ocs__mgb-home-quote">
-      <blockquote>“Art is as natural as sunshine and as vital as nourishment.”</blockquote>
-      <figcaption>MaryAnn F. Kohl</figcaption>
-    </figure>
   </section>
 
   <section class="ocs__mgb-home-section" id="programs" aria-labelledby="mgb-programs-title">
@@ -43,8 +30,8 @@ permalink: /
       </div>
     </div>
 
-    <div class="ocs__mgb-home-programs">
-      <article class="ocs__mgb-home-program-card">
+    <div class="ocs__grid ocs__grid--card ocs__mgb-home-programs">
+      <article class="ocs__grid-cell ocs__mgb-home-program-card">
         <figure class="ocs__mgb-home-card-image">
           <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/90ab2abe-a907-4e62-bd39-8c2b770fcd45/AdobeStock_671974002.jpeg?format=750w" alt="A caregiver and child drawing together at home" loading="lazy">
         </figure>
@@ -56,7 +43,7 @@ permalink: /
         </div>
       </article>
 
-      <article class="ocs__mgb-home-program-card">
+      <article class="ocs__grid-cell ocs__mgb-home-program-card">
         <figure class="ocs__mgb-home-card-image">
           <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/ab267415-4074-4f70-9c17-9ff3b8d82f0e/AdobeStock_494897619.jpeg?format=750w" alt="A uniformed service member embraces a child outdoors" loading="lazy">
         </figure>
@@ -68,7 +55,7 @@ permalink: /
         </div>
       </article>
 
-      <article class="ocs__mgb-home-program-card">
+      <article class="ocs__grid-cell ocs__mgb-home-program-card">
         <figure class="ocs__mgb-home-card-image">
           <img src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1773180586469-4EBY4RXTNIE56GQ9QB6B/unsplash-image-fXkoHG4dYxA.jpg?format=750w" alt="A multigenerational family gathered together outdoors" loading="lazy">
         </figure>

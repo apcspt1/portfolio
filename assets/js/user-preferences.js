@@ -87,9 +87,9 @@
       size: 14, accent: '#3b82f6',
     },
     Light: {
-      bg: '#fcfaff', text: '#382e47',
-      font: "'Poppins', sans-serif",
-      size: 14, accent: '#7653b3',
+      bg: '#ffffff', text: '#1f2937',
+      font: "'DM Sans', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+      size: 14, accent: '#2563eb',
     },
     Green: {
       bg: '#154734', text: '#e6f6ef',
@@ -169,7 +169,7 @@
      */
     static inject(opts) {
       const { bg, text, font, size, accent, panel, uiBorder, textMuted,
-              selectionColor, buttonStyle } = opts;
+              selectionColor, buttonStyle, typographyOnly = false } = opts;
 
       let style = document.getElementById(TailwindOverrideStyleSheetInjector.STYLE_ID);
       if (!style) {
@@ -182,21 +182,55 @@
       if (buttonStyle === 'square') btnRadius = '0';
       else if (buttonStyle === 'pill') btnRadius = '9999px';
 
+      if (typographyOnly) {
+        style.textContent = `
+          @layer user-preferences-theme {
+            html.user-preferences-typography-active,
+            html.user-preferences-typography-active body {
+              font-family: ${font} !important;
+              font-size: ${size}px !important;
+            }
+            html.user-preferences-button-style-active button,
+            html.user-preferences-button-style-active .btn,
+            html.user-preferences-button-style-active [class*="rounded"] button,
+            html.user-preferences-button-style-active input[type="submit"],
+            html.user-preferences-button-style-active input[type="button"] {
+              border-radius: ${btnRadius} !important;
+            }
+          }
+        `;
+        return;
+      }
+
       style.textContent = `
+        @layer user-preferences-theme {
         html.user-theme-active,
         html.user-theme-active body {
           background-color: ${bg} !important;
+          background-image: none !important;
           color: ${text} !important;
           font-family: ${font} !important;
           font-size: ${size}px !important;
         }
+        html.user-theme-active body *,
+        html.user-theme-active body *::before,
+        html.user-theme-active body *::after {
+          color: ${text} !important;
+          background-color: transparent !important;
+          background-image: none !important;
+          border-color: ${uiBorder} !important;
+          box-shadow: none !important;
+          text-shadow: none !important;
+          outline-color: ${accent} !important;
+          text-decoration-color: ${accent} !important;
+        }
         html.user-theme-active ::selection {
           background-color: ${selectionColor} !important;
-          color: white !important;
+          color: ${text} !important;
         }
         html.user-theme-active ::-moz-selection {
           background-color: ${selectionColor} !important;
-          color: white !important;
+          color: ${text} !important;
         }
         html.user-theme-active button,
         html.user-theme-active .btn,
@@ -311,6 +345,68 @@
         html.user-theme-active a.btn {
           color: inherit !important;
         }
+        html.user-theme-active body :is(
+          .card,
+          .ocs__card,
+          [class$="-card"],
+          [class*="-card "],
+          .panel,
+          .box,
+          .ocs__grid-cell,
+          .ocs__modal-card,
+          [class*="rounded-lg"],
+          [class*="rounded-xl"],
+          .site-header,
+          .site-footer,
+          #masterFooter,
+          .lesson-sidebar,
+          .sidebar,
+          aside
+        ) {
+          background-color: ${panel} !important;
+          background-image: none !important;
+        }
+        html.user-theme-active body input,
+        html.user-theme-active body select,
+        html.user-theme-active body textarea {
+          background-color: ${panel} !important;
+          background-image: none !important;
+          border-color: ${uiBorder} !important;
+          color: ${text} !important;
+        }
+        html.user-theme-active body a {
+          color: ${accent} !important;
+        }
+        html.user-theme-active body :is(
+          button,
+          input[type="button"],
+          input[type="submit"],
+          input[type="reset"],
+          [role="button"],
+          .btn,
+          .ocs__btn,
+          .submit-button,
+          .save-section-btn,
+          [class*="btn"]
+        ) {
+          background-color: ${accent} !important;
+          background-image: none !important;
+          border-color: ${accent} !important;
+          color: ${text} !important;
+        }
+        html.user-theme-active body svg,
+        html.user-theme-active body svg * {
+          fill: currentColor !important;
+          stroke: currentColor !important;
+        }
+        html.user-theme-active body input,
+        html.user-theme-active body select,
+        html.user-theme-active body textarea,
+        html.user-theme-active body progress {
+          accent-color: ${accent} !important;
+          caret-color: ${accent} !important;
+        }
+        }
       `;
     }
 
@@ -341,6 +437,43 @@
 
       const root = document.documentElement;
       const set = (name, value) => root.style.setProperty(name, value);
+      const sameColor = (left, right) =>
+        String(left).toLowerCase() === String(right).toLowerCase();
+      const defaultSelectionColor = ['#3b82f6', base.accent]
+        .some(color => sameColor(selectionColor, color));
+      const usesSiteDefaultColors =
+        sameColor(bg, base.bg) &&
+        sameColor(text, base.text) &&
+        sameColor(accent, base.accent) &&
+        defaultSelectionColor;
+
+      if (usesSiteDefaultColors) {
+        ThemePreferencesEngine.reset();
+
+        const typographyChanged = font !== base.font || Number(size) !== Number(base.size);
+        const buttonStyleChanged = buttonStyle !== 'rounded';
+        if (typographyChanged) {
+          set('--pref-font-family', font);
+          set('--pref-font-size', size + 'px');
+          root.classList.add('user-preferences-typography-active');
+        }
+        if (buttonStyleChanged) {
+          root.classList.add('user-preferences-button-style-active');
+        }
+        if (typographyChanged || buttonStyleChanged) {
+          TailwindOverrideStyleSheetInjector.inject({
+            font, size, buttonStyle, typographyOnly: true,
+          });
+        }
+
+        TranslationLanguageManager.apply(prefs?.language || '');
+        return;
+      }
+
+      root.classList.remove(
+        'user-preferences-typography-active',
+        'user-preferences-button-style-active'
+      );
 
       // Core preference variables
       set('--pref-bg-color', bg);
@@ -435,7 +568,11 @@
     /** Remove all user-theme CSS custom properties and the override sheet */
     static reset() {
       const root = document.documentElement;
-      root.classList.remove('user-theme-active');
+      root.classList.remove(
+        'user-theme-active',
+        'user-preferences-typography-active',
+        'user-preferences-button-style-active'
+      );
       TailwindOverrideStyleSheetInjector.remove();
 
       const props = [

@@ -26,6 +26,7 @@
 .user-theme-active,
 .user-theme-active.dark {
   background-color: var(--pref-bg-color) !important;
+  background-image: none !important;
   color: var(--pref-text-color) !important;
   font-family: var(--pref-font-family) !important;
   font-size: var(--pref-font-size) !important;
@@ -40,8 +41,12 @@
   article,
   .post,
   .content,
-  .opencs_root {
+  .opencs_root,
+  .site-header,
+  .site-footer,
+  #masterFooter {
     background-color: var(--pref-bg-color) !important;
+    background-image: none !important;
     color: var(--pref-text-color) !important;
     border-color: var(--ui-border) !important;
   }
@@ -56,6 +61,7 @@
   .sidebar-container,
   .side-panel {
     background-color: var(--pref-bg-color) !important;
+    background-image: none !important;
     color: var(--pref-text-color) !important;
     border-color: var(--ui-border) !important;
   }
@@ -135,6 +141,7 @@
   [class*="rounded-xl"],
   [class*="rounded-lg"] {
     background-color: var(--pref-bg-color) !important;
+    background-image: none !important;
     border-color: var(--ui-border) !important;
     color: var(--pref-text-color) !important;
   }
@@ -249,5 +256,19 @@
       fill: var(--pref-accent-color) !important;
       stroke: var(--pref-accent-color) !important;
     }
+  }
+
+}
+
+html.user-theme-active {
+  .ocs__card,
+  [class$="-card"],
+  [class*="-card "],
+  .ocs__grid--card .ocs__grid-cell,
+  .ocs__mgb-about-pillars article {
+    background-color: var(--pref-bg-color) !important;
+    background-image: none !important;
+    border-color: var(--ui-border) !important;
+    color: var(--pref-text-color) !important;
   }
 }
