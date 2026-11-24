@@ -12,8 +12,8 @@ permalink: /
       alt="A group of children sitting together in a classroom"
       fetchpriority="high">
     <div class="ocs__mgb-home-banner-copy">
-      <p class="ocs__mgb-home-eyebrow">Bridging psychology &amp; art</p>
-      <h1 id="mgb-home-title">My Good <span>Brain</span></h1>
+      <p class="ocs__mgb-home-eyebrow">My Good Brain&amp;</p>
+      <h1 id="mgb-home-title">Bridging <span>pyschology</span> and <span>art</span></h1>
       <p class="ocs__mgb-home-banner-lead">
         An arts-based nonprofit helping school-aged youth practice healthy coping strategies through art and play.
       </p>

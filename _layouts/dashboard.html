@@ -12,10 +12,13 @@ active_tab: dashboard
         <div class="text-sm font-medium text-center border-b text-neutral-400 border-neutral-700 relative">
             <ul class="flex flex-wrap -mb-px relative" id="tab-bar">
                 <li class="me-2">
-                    <a href="#" id="tab-admin-evaluation"
-                        class="tab-btn inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:border-neutral-300 hover:text-neutral-300 active text-blue-500 border-blue-500" aria-current="page">
-                        Preferences
-                    </a>
+                    <a href="#" id="tab-appearance" class="tab-btn inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:border-neutral-300 hover:text-neutral-300 active text-blue-500 border-blue-500" aria-current="page">Appearance</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" id="tab-voice" class="tab-btn inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:border-neutral-300 hover:text-neutral-300">Language &amp; voice</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" id="tab-tracking" class="tab-btn inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:border-neutral-300 hover:text-neutral-300">Head tracking</a>
                 </li>
             </ul>
             <!-- sliding underline indicator -->
@@ -55,12 +58,11 @@ active_tab: dashboard
             </div>
 
             <!-- Preferences tab content -->
-            <div id="tab-content-preferences" class="tab-content block px-6 py-4 text-neutral-200 max-w-5xl mx-auto">
-                <h2 class="text-xl font-semibold mb-2">Preferences</h2>
-                <p class="text-neutral-400 mb-6">Customize how the site looks. Changes apply across the site and are saved locally.</p>
+            <div id="tab-content-preferences" class="tab-content block px-6 py-4 text-neutral-200 ocs__prefs">
+                <p class="ocs__prefs-intro">Customize how the site looks. Changes apply across the site and are saved locally.</p>
 
                 <!-- Language/Translation Section (moved to top) -->
-                <div class="p-4 rounded-lg bg-neutral-800 border border-neutral-700">
+                <div class="ocs__prefs-panel-voice p-4 rounded-lg bg-neutral-800 border border-neutral-700" data-prefs-panel="voice">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-medium">🌐 Language Translation</h3>
                     </div>
@@ -97,7 +99,7 @@ active_tab: dashboard
                 </div>
 
                 <!-- Text-to-Speech Section (moved to second) -->
-                <div class="mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700">
+                <div class="ocs__prefs-panel-voice mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700" data-prefs-panel="voice">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-medium">Text-to-Speech</h3>
                         <div class="flex gap-2">
@@ -134,7 +136,7 @@ active_tab: dashboard
                 </div>
 
                 <!-- Head Tracking Cursor Section -->
-                <div class="mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700">
+                <div class="ocs__prefs-panel-tracking mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700" data-prefs-panel="tracking">
                     <div class="flex justify-between items-center mb-4 gap-3">
                         <h3 class="font-medium">Head Tracking Cursor</h3>
                         <label class="inline-flex items-center cursor-pointer">
@@ -174,7 +176,7 @@ active_tab: dashboard
                     <p id="head-tracking-status" class="text-sm text-neutral-400 mt-3"></p>
                 </div>
 
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="ocs__prefs-panel-appearance mt-6 grid grid-cols-1 md:grid-cols-2 gap-6" data-prefs-panel="appearance">
                     <!-- Column 1: Text (font size, font family only) -->
                     <div class="p-4 rounded-lg bg-neutral-800 border border-neutral-700">
                         <div class="flex justify-between items-center mb-4">
@@ -242,7 +244,7 @@ active_tab: dashboard
                 </div>
 
                 <!-- Actions Row -->
-                <div class="mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700">
+                <div class="ocs__prefs-panel-appearance mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700" data-prefs-panel="appearance">
                     <div class="flex flex-wrap items-center justify-between gap-4">
                         <div class="flex gap-3">
                             <button id="save-preferences" type="button" class="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-medium">Save All</button>
@@ -253,7 +255,7 @@ active_tab: dashboard
                 </div>
 
                 <!-- Themes Section -->
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="ocs__prefs-panel-appearance mt-6 grid grid-cols-1 md:grid-cols-2 gap-6" data-prefs-panel="appearance">
                     <!-- Preset Themes -->
                     <div class="p-4 rounded-lg bg-neutral-800 border border-neutral-700">
                         <h3 class="font-medium mb-3">Preset Themes</h3>
@@ -271,7 +273,7 @@ active_tab: dashboard
                     </div>
                 </div>
 
-                <div class="mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700" id="ask-ai-panel">
+                <div class="ocs__prefs-panel-appearance mt-6 p-4 rounded-lg bg-neutral-800 border border-neutral-700" id="ask-ai-panel" data-prefs-panel="appearance">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-medium">Ask AI: Generate a Theme</h3>
                         <div class="flex gap-2">
@@ -355,9 +357,22 @@ active_tab: dashboard
             tabs.forEach(t => t.classList.remove("active", "text-blue-500", "border-blue-500"));
             tabContents.forEach(c => c.classList.add("hidden"));
             tabContents.forEach(c => c.classList.remove("block"));
-            const targetId = `tab-content-${tab.id.replace("tab-", "")}`;
-            document.getElementById(targetId).classList.remove("hidden");
-            document.getElementById(targetId).classList.add("block");
+            const panelName = tab.id.replace("tab-", "");
+            if (panelName === "appearance" || panelName === "voice" || panelName === "tracking") {
+                const preferences = document.getElementById("tab-content-preferences");
+                preferences.classList.remove("hidden");
+                preferences.classList.add("block");
+                document.querySelectorAll("[data-prefs-panel]").forEach((panel) => {
+                    panel.classList.toggle("hidden", panel.dataset.prefsPanel !== panelName);
+                });
+            } else {
+                const targetId = `tab-content-${panelName}`;
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.classList.remove("hidden");
+                    target.classList.add("block");
+                }
+            }
             tab.classList.add("active", "text-blue-500", "border-blue-500");
             setUnderline(tab);
         });
@@ -367,6 +382,12 @@ active_tab: dashboard
     document.addEventListener('DOMContentLoaded', async () => {
         const activeTab = document.querySelector(".tab-btn.active");
         if (activeTab) setUnderline(activeTab);
+        const appearanceActive = activeTab?.id === "tab-appearance";
+        if (appearanceActive) {
+            document.querySelectorAll("[data-prefs-panel]").forEach((panel) => {
+                panel.classList.toggle("hidden", panel.dataset.prefsPanel !== "appearance");
+            });
+        }
 
         // Check admin status and gate UI
         try {
