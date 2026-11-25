@@ -9,6 +9,7 @@ show_reading_time: false
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+<div class="ocs__login-page">
 <div class="login-container">
     <!-- Python Login Form -->
     <div class="login-card">
@@ -16,7 +17,7 @@ show_reading_time: false
         <hr>
         <form id="pythonForm" onsubmit="loginBoth(); return false;">
             <div class="form-group">
-                <input type="text" id="uid" placeholder="GitHub ID" required>
+                <input type="text" id="uid" placeholder="Username" required>
             </div>
             <div class="form-group">
                 <input type="password" id="password" placeholder="Password" required>
@@ -77,8 +78,10 @@ show_reading_time: false
         <form id="signupForm" onsubmit="handleSignupSubmit(event);">
             <div class="form-group">
                 <select id="signupRole">
-                    <option value="student" selected>I am a Student</option>
-                    <option value="mentor">I am a Mentor</option>
+                    <option value="student" selected>I am a student</option>
+                    <option value="mentor">I am a mentor</option>
+                    <option value="student">I am a user</option>
+                    <option value="mentor">I am a volunteer</option>
                     <option value="guest" id="guestOption" hidden disabled>I am a guest</option>
                 </select>
                 <p id="guest-note" hidden>
@@ -91,7 +94,7 @@ show_reading_time: false
                 <input type="text" id="name" placeholder="Name" required>
             </div>
             <div class="form-group">
-                <input type="text" id="signupUid" placeholder="GitHub ID" required>
+                <input type="text" id="signupUid" placeholder="Username" required>
             </div>
             <div class="form-group">
                 <input type="text" id="signupSid" placeholder="Student ID" required>
@@ -136,6 +139,7 @@ show_reading_time: false
             <div id="overallStatus" class="overall-status hidden"></div>
         </form>
     </div>
+</div>
 </div>
 
 <script type="module">

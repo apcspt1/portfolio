@@ -43,11 +43,11 @@ export function initPreferencesLayout() {
 
     function readPrefs() {
         return {
-            bg: readColor('pref-bg-color', '#121212'),
-            text: readColor('pref-text-color', '#F0F0F0'),
-            accent: readColor('pref-accent-color', '#4CAFEF'),
-            selectionColor: readColor('pref-selection-color', '#3b82f6'),
-            font: document.getElementById('pref-font-family')?.value || 'Inter, system-ui, sans-serif',
+            bg: readColor('pref-bg-color', '#fcfaff'),
+            text: readColor('pref-text-color', '#382e47'),
+            accent: readColor('pref-accent-color', '#7653b3'),
+            selectionColor: readColor('pref-selection-color', '#e8dff3'),
+            font: document.getElementById('pref-font-family')?.value || 'Poppins, sans-serif',
             size: Number(document.getElementById('pref-font-size')?.value || 14),
             buttonStyle: document.getElementById('pref-button-style')?.value || 'default'
         };
@@ -89,52 +89,52 @@ export function initPreferencesLayout() {
 
     function updatePreview() {
         const prefs = readPrefs();
-        if (!preview) return;
+        if (preview) {
+            paint(preview, 'background-color', prefs.bg);
+            paint(preview, 'color', prefs.text);
+            paint(preview, 'font-family', prefs.font);
+            paint(preview, 'font-size', `${prefs.size}px`);
 
-        paint(preview, 'background-color', prefs.bg);
-        paint(preview, 'color', prefs.text);
-        paint(preview, 'font-family', prefs.font);
-        paint(preview, 'font-size', `${prefs.size}px`);
+            const body = $('.ocs__prefs-preview-body');
+            paint(body, 'background-color', prefs.bg);
+            paint(body, 'color', prefs.text);
 
-        const body = $('.ocs__prefs-preview-body');
-        paint(body, 'background-color', prefs.bg);
-        paint(body, 'color', prefs.text);
+            body?.querySelectorAll('h4, p').forEach((element) => {
+                paint(element, 'color', prefs.text);
+                paint(element, 'font-family', prefs.font);
+            });
 
-        body?.querySelectorAll('h4, p').forEach((element) => {
-            paint(element, 'color', prefs.text);
-            paint(element, 'font-family', prefs.font);
-        });
+            paint($('.ocs__prefs-preview-bar'), 'background-color', prefs.accent);
 
-        paint($('.ocs__prefs-preview-bar'), 'background-color', prefs.accent);
+            const selection = $('[data-preview="selection"]');
+            paint(selection, 'background-color', prefs.selectionColor);
+            paint(selection, 'color', readableOn(prefs.selectionColor));
 
-        const selection = $('[data-preview="selection"]');
-        paint(selection, 'background-color', prefs.selectionColor);
-        paint(selection, 'color', readableOn(prefs.selectionColor));
+            const link = $('[data-preview="link"]');
+            paint(link, 'color', prefs.accent);
+            paint(link, 'text-decoration', 'underline');
 
-        const link = $('[data-preview="link"]');
-        paint(link, 'color', prefs.accent);
-        paint(link, 'text-decoration', 'underline');
+            const primaryButton = $('[data-preview="button"]');
+            const secondaryButton = $('[data-preview="ghost"]');
+            const radius = {
+                default: '12px',   // ocs__btn's own medium shape
+                'rounded-all': '0.375rem',
+                square: '0',
+                pill: '9999px'
+            }[prefs.buttonStyle] ?? '12px';
 
-        const primaryButton = $('[data-preview="button"]');
-        const secondaryButton = $('[data-preview="ghost"]');
-        const radius = {
-            default: '12px',   // ocs__btn's own medium shape
-            'rounded-all': '0.375rem',
-            square: '0',
-            pill: '9999px'
-        }[prefs.buttonStyle] ?? '12px';
+            [primaryButton, secondaryButton].forEach((button) => {
+                paint(button, 'border-radius', radius);
+                paint(button, 'font-family', prefs.font);
+            });
 
-        [primaryButton, secondaryButton].forEach((button) => {
-            paint(button, 'border-radius', radius);
-            paint(button, 'font-family', prefs.font);
-        });
+            paint(primaryButton, 'background-color', prefs.accent);
+            paint(primaryButton, 'color', readableOn(prefs.accent));
 
-        paint(primaryButton, 'background-color', prefs.accent);
-        paint(primaryButton, 'color', readableOn(prefs.accent));
-
-        paint(secondaryButton, 'background-color', 'transparent');
-        paint(secondaryButton, 'color', prefs.text);
-        paint(secondaryButton, 'border', `1px solid ${prefs.accent}`);
+            paint(secondaryButton, 'background-color', 'transparent');
+            paint(secondaryButton, 'color', prefs.text);
+            paint(secondaryButton, 'border', `1px solid ${prefs.accent}`);
+        }
 
         updateCheck(textCheck, contrastRatio(prefs.bg, prefs.text));
         updateCheck(accentCheck, contrastRatio(prefs.bg, prefs.accent));

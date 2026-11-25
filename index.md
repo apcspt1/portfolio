@@ -12,10 +12,10 @@ permalink: /
       alt="A group of children sitting together in a classroom"
       fetchpriority="high">
     <div class="ocs__mgb-home-banner-copy">
-      <p class="ocs__mgb-home-eyebrow">My Good Brain&amp;</p>
-      <h1 id="mgb-home-title">Bridging <span>pyschology</span> and <span>art</span></h1>
+      <p class="ocs__mgb-home-eyebrow">My Good Brain</p>
+      <h1 id="mgb-home-title">Bridging <span>psychology</span> and <span>art</span></h1>
       <p class="ocs__mgb-home-banner-lead">
-        An arts-based nonprofit helping school-aged youth practice healthy coping strategies through art and play.
+        An arts-based nonprofit helping school-aged youth practice healthy coping strategies through art and play
       </p>
       <a class="ocs__mgb-home-link ocs__mgb-home-link--light" href="#programs">Explore our programs <span aria-hidden="true">&rarr;</span></a>
     </div>
@@ -39,7 +39,7 @@ permalink: /
           <p class="ocs__mgb-home-label">For homeschool &amp; enrichment families</p>
           <h3>Your enrichment funds can come here.</h3>
           <p>Explore arts-based enrichment opportunities for homeschool and charter families.</p>
-          <a class="ocs__mgb-home-link" href="https://www.mygoodbrain.org/enrichment" target="_blank" rel="noopener noreferrer">Learn more <span aria-hidden="true">&rarr;</span></a>
+          <a class="ocs__mgb-home-link" href="{{ '/programs/enrichment/' | relative_url }}">Learn more <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
 
@@ -51,7 +51,7 @@ permalink: /
           <p class="ocs__mgb-home-label">For San Diego families</p>
           <h3>Building Resilient Families Through Art</h3>
           <p>A free resource for San Diego veterans and parents of young children.</p>
-          <a class="ocs__mgb-home-link" href="https://www.mygoodbrain.org/military-families" target="_blank" rel="noopener noreferrer">Learn more <span aria-hidden="true">&rarr;</span></a>
+          <a class="ocs__mgb-home-link" href="{{ '/programs/veteran-families/' | relative_url }}">Learn more <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
 
@@ -63,7 +63,7 @@ permalink: /
           <p class="ocs__mgb-home-label">Family support</p>
           <h3>Immigration &amp; Family Support Resources</h3>
           <p>Community guidance for supporting youth and families through isolation, immigration-related challenges, and other uncertain times.</p>
-          <a class="ocs__mgb-home-link" href="https://www.mygoodbrain.org/blog/how-to-be-a-supportive-neighbor-during-uncertain-times" target="_blank" rel="noopener noreferrer">Read community guidance <span aria-hidden="true">&rarr;</span></a>
+          <a class="ocs__mgb-home-link" href="{{ '/programs/family-support/' | relative_url }}">Read community guidance <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
     </div>

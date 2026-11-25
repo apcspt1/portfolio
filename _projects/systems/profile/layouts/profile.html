@@ -18,7 +18,7 @@ Gist card need Spring, so a Flask-only site (spring: false in _config.yml) leave
 {%- endfor -%}]
 </script>
 
-<div class="ocs__container ocs__container--fill">
+<div class="ocs__container ocs__container--fill ocs__profile-page">
 
     <!-- Who the student is, and what is left to set up -->
     <section class="ocs__card" aria-labelledby="profileName">
@@ -126,10 +126,9 @@ Gist card need Spring, so a Flask-only site (spring: false in _config.yml) leave
     <section class="ocs__card" id="skillsCard" aria-labelledby="skills" hidden>
         <div class="ocs__card-header">
             <h2 class="ocs__section-title" id="skills">Skill check-in</h2>
-            <a class="ocs__btn" href="{{ site.baseurl }}/analytics-dashboard">Skill Passport</a>
         </div>
         <form class="ocs__stack" id="skillSnapshotForm" novalidate>
-            <p class="ocs__text">Rate yourself on one project. Each check-in is added to your Skill Passport.</p>
+            <p class="ocs__text">Rate yourself on one project. Each check-in is saved to your profile.</p>
             <div class="ocs__field">
                 <label class="ocs__label" for="snapshotProjectName">Project</label>
                 <input class="ocs__input" type="text" id="snapshotProjectName" name="project_name" placeholder="Web App Sprint 1…" autocomplete="off">

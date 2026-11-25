@@ -3,9 +3,16 @@
             {%- assign default_paths = site.pages | map: "path" -%}
             {%- assign page_paths = site.minima.nav_pages | default: default_paths -%}
             {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
-            <a class="site-title" rel="author" href="{{ '/' | relative_url }}" data-value="{{ site.title | escape }}">
+            <a class="site-title site-brand" rel="author" href="{{ '/' | relative_url }}" data-value="{{ site.title | escape }}" aria-label="My Good Brain home">
                 <img id="site-logo" src="https://images.squarespace-cdn.com/content/v1/5ffdf49e3d30d07ea498ac3b/1627273049439-2X3EKF2VE4WVLSJZ7ZJC/MGB+Logo.png?format=300w" alt="">
-                <span class="site-brand-name">My Good Brain</span>
+                <svg class="site-brand-name" viewBox="0 0 100 72" aria-hidden="true" focusable="false">
+                    <defs>
+                        <path id="site-brand-name-arc" d="M 6 54 A 44 44 0 0 1 94 54"></path>
+                    </defs>
+                    <text>
+                        <textPath href="#site-brand-name-arc" startOffset="50%" text-anchor="middle">MY GOOD BRAIN</textPath>
+                    </text>
+                </svg>
             </a>
 
             {%- if titles_size > 0 -%}
@@ -67,7 +74,7 @@
                         </a>
                         <div class="nav-dropdown__menu" aria-label="Blog pages">
                             {%- for child in site.data.navigation.blog -%}
-                            <a class="page-link nav-dropdown__item" href="{{ child.url }}" target="_blank" rel="noopener noreferrer">{{ child.title | escape }}</a>
+                            <a class="page-link nav-dropdown__item" href="{{ child.url | relative_url }}">{{ child.title | escape }}</a>
                             {%- endfor -%}
                         </div>
                     </div>

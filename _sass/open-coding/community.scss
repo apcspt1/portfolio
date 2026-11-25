@@ -88,7 +88,7 @@
 
 .ocs__community-hub {
   --hub-ink: #42334f;
-  --hub-muted: #716779;
+  --hub-muted: #51435f;
   --hub-lilac: #eee6f6;
   --hub-pink: #f5e5eb;
   --hub-yellow: #f5dfa4;
@@ -243,7 +243,7 @@
 
 .ocs__community-hub-card:nth-child(3) .ocs__community-card-number {
   background: var(--hub-green);
-  color: #456f62;
+  color: #604184;
 }
 
 .ocs__community-card-label {
@@ -345,6 +345,15 @@
     grid-template-columns: 1fr;
   }
 
+  .ocs__resource-topic-hero--image,
+  .ocs__resource-topic-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .ocs__resource-topic-highlights article {
+    min-height: 0;
+  }
+
   .ocs__teen-resources-hero {
     grid-template-columns: 1fr;
   }
@@ -374,7 +383,7 @@
 .ocs__community-volunteer,
 .ocs-community-calendar {
   --mgb-ink: #42334f;
-  --mgb-muted: #716779;
+  --mgb-muted: #51435f;
   --mgb-purple: #7653a2;
   --mgb-border: #e8dfec;
   color: var(--mgb-ink);
@@ -473,6 +482,21 @@
   border-radius: 0.5rem;
   background: #fff;
   color: var(--mgb-ink);
+}
+
+.ocs__community-volunteer input::placeholder,
+.ocs__community-volunteer textarea::placeholder,
+.ocs__login-page .form-group input::placeholder,
+.ocs__login-page .form-group textarea::placeholder {
+  color: #51435f;
+  opacity: 1;
+}
+
+.ocs__login-page .form-group input:focus-visible,
+.ocs__login-page .form-group select:focus-visible,
+.ocs__login-page .form-group textarea:focus-visible {
+  outline-color: #b6dfff;
+  border-color: #7653a2;
 }
 
 .ocs__community-program-controls .ocs__input {
@@ -593,7 +617,7 @@
 .ocs__community-volunteer .ocs__callout {
   border-color: #e3d8eb;
   background: #f7f2fa;
-  color: #5f5269;
+  color: #51435f;
 }
 
 .ocs__community-volunteer .ocs__table-wrap {
@@ -611,7 +635,7 @@
   padding: 1rem;
   border-bottom: 1px solid #eee8f2;
   background: #fff;
-  color: #716779;
+  color: #17131b;
   text-align: left;
   vertical-align: top;
 }
@@ -628,8 +652,12 @@
 }
 
 .ocs__community-volunteer-role-list {
-  color: var(--mgb-muted);
+  color: #17131b;
   line-height: 1.6;
+}
+
+.ocs__community-volunteer-role-list li {
+  color: #17131b !important;
 }
 
 .ocs__community-volunteer .ocs__volunteer-form {
@@ -810,11 +838,15 @@
 
 .ocs__login-page {
   --mgb-ink: #42334f;
-  --mgb-muted: #716779;
+  --mgb-muted: #51435f;
   max-width: 1100px;
   padding-top: 1rem;
   padding-bottom: 3rem;
   color: var(--mgb-ink);
+}
+
+.post:has(.ocs__login-page) > .post-title {
+  color: #604184 !important;
 }
 
 .ocs__resource-topic {
@@ -847,9 +879,97 @@
   > p:last-child {
     max-width: 70ch;
     margin: 0;
-    color: #716779;
+    color: #51435f;
     font-size: 0.98rem;
     line-height: 1.7;
+  }
+}
+
+.ocs__resource-topic-hero--image {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+
+  .ocs__resources-eyebrow {
+    color: #a75473 !important;
+  }
+
+  > div > p:last-child {
+    max-width: 70ch;
+    margin: 0;
+    color: #42334f !important;
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-height: 21rem;
+    border: 1px solid rgba(80, 55, 116, 0.12);
+    border-radius: 0.75rem 0.75rem 2.5rem 0.75rem;
+    object-fit: cover;
+    box-shadow: 0 12px 26px rgba(80, 55, 116, 0.12);
+  }
+
+  figcaption {
+    margin-top: 0.6rem;
+    color: #604184;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+}
+
+.ocs__resource-topic-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0 auto 2.5rem;
+
+  article {
+    min-height: 9rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid #e8dfec;
+    border-top: 3px solid #b78bb0;
+    border-radius: 0.7rem;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(80, 55, 116, 0.05);
+  }
+
+  article:nth-child(2) {
+    border-top-color: #e5b65d;
+    background: #fffdf8;
+  }
+
+  article:nth-child(3) {
+    border-top-color: #a9cfe5;
+    background: #f9fcff;
+  }
+
+  span {
+    color: #7653a2;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    margin: 0.4rem 0;
+    color: #42334f;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin: 0;
+    color: #51435f;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }
 
@@ -867,7 +987,7 @@
   }
 
   > p {
-    color: #716779;
+    color: #51435f;
     line-height: 1.7;
   }
 }
@@ -906,7 +1026,7 @@
   }
 
   span {
-    color: #716779;
+    color: #51435f;
     font-size: 0.9rem;
     line-height: 1.5;
   }
@@ -961,7 +1081,7 @@
   }
 
   span {
-    color: #716779;
+    color: #51435f;
     font-size: 0.9rem;
     line-height: 1.5;
   }
@@ -1016,8 +1136,8 @@
   box-shadow: 0 12px 30px rgba(80, 55, 116, 0.07);
 }
 
-.ocs__login-page .login-card h2,
-.ocs__login-page .signup-card h2 {
+.ocs__login-page .login-card h1,
+.ocs__login-page .signup-card h1 {
   margin: 0;
   color: var(--mgb-ink);
   font-family: 'Lora', Georgia, serif;
@@ -1035,7 +1155,9 @@
   margin-bottom: 1rem;
 }
 
-.ocs__login-page .form-group input {
+.ocs__login-page .form-group input,
+.ocs__login-page .form-group select,
+.ocs__login-page .form-group textarea {
   box-sizing: border-box;
   width: 100%;
   min-height: 2.8rem;
@@ -1047,7 +1169,9 @@
   font: inherit;
 }
 
-.ocs__login-page .form-group input:focus-visible {
+.ocs__login-page .form-group input:focus-visible,
+.ocs__login-page .form-group select:focus-visible,
+.ocs__login-page .form-group textarea:focus-visible {
   outline: 3px solid #d9c6e8;
   border-color: #7653a2;
 }
@@ -1058,8 +1182,8 @@
   min-height: 2.8rem;
   border: 1px solid #7653a2;
   border-radius: 0.45rem;
-  background: #7653a2;
-  color: #fff;
+  background: #7653a2 !important;
+  color: #fff !important;
   font: inherit;
   font-weight: 700;
   transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -1067,8 +1191,20 @@
 
 .ocs__login-page .submit-button:hover,
 .ocs__login-page .signup-card button[type="submit"]:hover {
-  border-color: #604184;
-  background: #604184;
+  border-color: #604184 !important;
+  background: #604184 !important;
+}
+
+.ocs__login-page #pythonTitle,
+.ocs__login-page #signupTitle,
+.ocs__login-page .success,
+.ocs__login-page .oauth-success,
+.ocs__login-page .status-item.success .status-text {
+  color: #604184 !important;
+}
+
+.ocs__login-page #oauth-verification > p {
+  color: #51435f !important;
 }
 
 .ocs__login-page #message,

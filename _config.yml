@@ -133,5 +133,3 @@ minima:
     - navigation/resources.md 
     # Route to the existing OCS preferences panel.
     - navigation/preferences.md
-    - navigation/authentication/login.md
-

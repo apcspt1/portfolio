@@ -176,14 +176,123 @@ $prefs-gap: 0.75rem;
     margin: 0 auto;
 }
 
+.ocs__dashboard-page {
+    container-type: inline-size;
+    --pref-bg-color: #fcfaff;
+    --pref-text-color: #382e47;
+    --pref-accent-color: #7653b3;
+    --text-muted: #70677c;
+    --panel: #ffffff;
+    --panel-mid: #f4effa;
+    --ui-bg: #f8f5fc;
+    --ui-border: #e6deef;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 1rem;
+    background: var(--pref-bg-color);
+    color: var(--pref-text-color);
+}
+
+html.user-theme-active .ocs__dashboard-page {
+    --pref-bg-color: #fcfaff;
+    --pref-text-color: #382e47;
+    --pref-accent-color: #7653b3;
+    --text-muted: #70677c;
+    --panel: #ffffff;
+    --panel-mid: #f4effa;
+    --ui-bg: #f8f5fc;
+    --ui-border: #e6deef;
+}
+
+body.page-dashboard .theme-inner,
+body.page-dashboard .lesson-main {
+    background: #fcfaff !important;
+    color: #382e47 !important;
+}
+
+body.page-dashboard .lesson-sidebar {
+    border-color: #e6deef !important;
+    background: #ffffff !important;
+    color: #382e47 !important;
+}
+
+body.page-dashboard .lesson-sidebar .nav-item {
+    border-left-color: transparent !important;
+    background: #ffffff !important;
+    color: #604184 !important;
+}
+
+body.page-dashboard .lesson-sidebar .nav-item:hover,
+body.page-dashboard .lesson-sidebar .nav-item:focus-visible {
+    border-left-color: #7653b3 !important;
+    background: #f7f1fb !important;
+    color: #503774 !important;
+}
+
+body.page-dashboard .lesson-sidebar .nav-item.bg-neutral-700 {
+    border-left-color: #7653b3 !important;
+    background: #f0e8f7 !important;
+    color: #503774 !important;
+}
+
+body.page-dashboard .lesson-sidebar .text-neutral-500 {
+    color: #604184 !important;
+}
+
+html body.page-dashboard .ocs__dashboard-page .ocs__tabs--cards .ocs__tabs-btn {
+    border: 1px solid #e6deef !important;
+    border-bottom: 2px solid #e6deef !important;
+    border-radius: 0.65rem 0.65rem 0 0 !important;
+    background: #f4effa !important;
+    color: #604184 !important;
+}
+
+html body.page-dashboard .ocs__dashboard-page .ocs__tabs--cards .ocs__tabs-btn.active {
+    border-color: #7653b3 !important;
+    background: #7653b3 !important;
+    color: #ffffff !important;
+}
+
+html body.page-dashboard .ocs__dashboard-page .ocs__tabs--cards .ocs__tabs-underline {
+    background: #7653b3 !important;
+}
+
+html .ocs__dashboard-page .ocs__card {
+    border-color: var(--ui-border) !important;
+    background: #ffffff !important;
+    color: var(--pref-text-color) !important;
+    box-shadow: 0 10px 24px rgba(80, 55, 116, 0.055);
+}
+
+html .ocs__dashboard-page .ocs__prefs input:not([type="color"]):not([type="range"]):not([type="checkbox"]),
+html .ocs__dashboard-page .ocs__prefs select,
+html .ocs__dashboard-page .ocs__prefs textarea {
+    border-color: #d7c8e8 !important;
+    background: #ffffff !important;
+    color: var(--pref-text-color) !important;
+}
+
+.ocs__dashboard-page .ocs__prefs input[type="range"] {
+    accent-color: #7653b3 !important;
+}
+
 .ocs__prefs-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     gap: 1.5rem;
     align-items: start;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@container (max-width: 900px) {
+    .ocs__prefs-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ocs__prefs-aside {
+        position: static;
     }
 }
 
@@ -354,12 +463,8 @@ html.user-theme-active .ocs__prefs .ocs__prefs-swatch {
 
 .ocs__prefs-colors {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     gap: $prefs-gap;
-
-    @media (max-width: 600px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
 }
 
 // One color: its name, the picker, and the hex value
@@ -463,8 +568,8 @@ html.user-theme-active .ocs__prefs .ocs__prefs-swatch {
     gap: $prefs-gap;
     font-size: 0.85rem;
 
-    strong[data-status="pass"] { color: #7ee2a8; }
-    strong[data-status="warning"] { color: #ffb38a; }
+    strong[data-status="pass"] { color: #604184; }
+    strong[data-status="warning"] { color: #9a4f58; }
 }
 
 .ocs__prefs-actions {

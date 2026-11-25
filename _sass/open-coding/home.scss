@@ -4,6 +4,7 @@
   padding: 0 1.5rem 4rem;
   color: var(--pref-text-color);
   font-family: var(--pref-font-family);
+  --text-muted: #51435f;
 }
 
 html:not(.user-theme-active) .ocs__mgb-home {
@@ -11,7 +12,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   --pref-text-color: #392b45;
   --pref-font-family: 'DM Sans', Inter, system-ui, sans-serif;
   --pref-accent-color: #704b98;
-  --text-muted: #716779;
+  --text-muted: #51435f;
   --panel: #ffffff;
   --ui-border: #e8e0e8;
 }
@@ -41,7 +42,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   position: relative;
   display: flex;
   width: 100vw;
-  min-height: clamp(15rem, 24.75vw, 21.75rem);
+  min-height: clamp(14rem, 20vw, 18rem);
   align-items: center;
   overflow: hidden;
   margin-left: calc(50% - 50vw);
@@ -73,7 +74,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   width: min(100%, 1500px);
   max-width: 1500px;
   margin: 0 auto;
-  padding: clamp(2rem, 7vw, 5rem);
+  padding: clamp(1.75rem, 5vw, 4rem) clamp(2rem, 7vw, 5rem);
 }
 
 .ocs__mgb-home-banner-copy h1 {
@@ -95,21 +96,21 @@ html:not(.user-theme-active) .ocs__mgb-home {
 }
 
 .ocs__mgb-home-banner .ocs__mgb-home-eyebrow {
-  color: #ffd37b !important;
+  color: #f2a36f !important;
 }
 
 .ocs__mgb-home-banner h1 {
   max-width: none;
   margin: 0 0 1.25rem;
   color: #ffffff !important;
-  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-size: clamp(2.95rem, 6.4vw, 5.45rem);
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.045em;
 }
 
 .ocs__mgb-home-banner h1 span {
-  color: #ffd37b !important;
+  color: #a9ddff !important;
 }
 
 .ocs__mgb-home-banner-lead {
@@ -151,15 +152,15 @@ html:not(.user-theme-active) .ocs__mgb-home {
 .ocs__mgb-home-banner .ocs__mgb-home-link {
   padding: 0.75rem 1.1rem;
   border-radius: 0.25rem;
-  background: #f4c968;
-  color: #3b2b47;
+  background: #e58b58;
+  color: #27394b;
   text-decoration: none;
 }
 
 .ocs__mgb-home-banner .ocs__mgb-home-link:hover,
 .ocs__mgb-home-banner .ocs__mgb-home-link:focus-visible {
-  background: #ffe0a0;
-  color: #3b2b47;
+  background: #f0a575;
+  color: #27394b;
 }
 
 .ocs__mgb-home-banner-credit {
@@ -174,7 +175,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
 .ocs__mgb-home-banner-credit:hover,
 .ocs__mgb-home-banner-credit:focus-visible {
-  color: #ffda8b;
+  color: #c7eaff;
 }
 
 .ocs__mgb-home-mission {
@@ -231,7 +232,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
 .ocs__mgb-home-quote figcaption {
   margin-top: 1rem;
-  color: #716779;
+  color: #51435f;
   font-size: 0.95rem;
 }
 
@@ -290,17 +291,17 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
 .ocs__mgb-home-label {
   margin-bottom: 0.6rem;
-  color: #567d78 !important;
+  color: #604184 !important;
   font-size: 0.88rem;
   font-weight: 600;
 }
 
 .ocs__mgb-home-program-card:nth-child(2) .ocs__mgb-home-label {
-  color: #9a672b !important;
+  color: #604184 !important;
 }
 
 .ocs__mgb-home-program-card:nth-child(3) .ocs__mgb-home-label {
-  color: #925b7d !important;
+  color: #604184 !important;
 }
 
 .ocs__mgb-home-program-card h3 {
@@ -381,7 +382,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 }
 
 .ocs__mgb-home-cta .ocs__mgb-home-eyebrow {
-  color: #ffd37b !important;
+  color: #f2a36f !important;
 }
 
 .ocs__mgb-home-cta h2 {
@@ -413,14 +414,14 @@ html:not(.user-theme-active) .ocs__mgb-home {
 .ocs__mgb-home-cta-links .ocs__mgb-home-link--warm {
   padding: 0.7rem 0.95rem;
   border-radius: 0.25rem;
-  background: #f4c968;
+  background: #a9ddff;
   color: #392b45;
   text-decoration: none;
 }
 
 .ocs__mgb-home-cta-links .ocs__mgb-home-link--warm:hover,
 .ocs__mgb-home-cta-links .ocs__mgb-home-link--warm:focus-visible {
-  background: #ffe0a0;
+  background: #c7eaff;
   color: #392b45;
 }
 
@@ -432,7 +433,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 }
 
 .user-theme-active .ocs__mgb-home-banner h1 span {
-  color: #ffd37b !important;
+  color: #a9ddff !important;
 }
 
 .user-theme-active .ocs__mgb-home-banner .ocs__mgb-home-link {
@@ -446,7 +447,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 }
 
 .user-theme-active .ocs__mgb-home-cta .ocs__mgb-home-eyebrow {
-  color: #ffd37b !important;
+  color: #f2a36f !important;
 }
 
 .user-theme-active .ocs__mgb-home-cta .ocs__mgb-home-link--warm {
@@ -455,7 +456,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
 .ocs__mgb-about {
   --about-ink: #42334f;
-  --about-muted: #716779;
+  --about-muted: #51435f;
   max-width: 1200px;
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -568,7 +569,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 }
 
 .ocs__mgb-about-pillars article {
-  padding: 1.5rem;
+  padding: 1.15rem;
   border: 1px solid #e8dfec;
   border-radius: 0.75rem;
   background: #ffffff;
@@ -596,7 +597,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   margin: 0.55rem 0;
   color: var(--about-ink) !important;
   font-family: 'Lora', Georgia, serif;
-  font-size: 1.65rem;
+  font-size: 1.4rem;
   text-shadow: none;
 }
 
@@ -637,7 +638,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 .user-theme-active .ocs__mgb-about-intro > p:last-child,
 .user-theme-active .ocs__mgb-about-story-copy p,
 .user-theme-active .ocs__mgb-about-pillars p {
-  color: #716779 !important;
+  color: #51435f !important;
 }
 
 .user-theme-active .ocs__mgb-about-pillars article {
@@ -672,7 +673,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   }
 
   .ocs__mgb-home-banner {
-    min-height: 21rem;
+    min-height: 18rem;
     align-items: flex-end;
   }
 
@@ -685,7 +686,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
   }
 
   .ocs__mgb-home-banner-copy {
-    padding: 2rem 1.5rem 4.5rem;
+    padding: 1.75rem 1.5rem 4rem;
   }
 
   .ocs__mgb-home-banner h1 {
@@ -810,7 +811,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
   > p:last-child {
     margin: 0;
-    color: #716779;
+    color: #51435f;
   }
 }
 
@@ -821,10 +822,10 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
   article {
     display: flex;
-    min-height: 8rem;
+    min-height: 6rem;
     flex-direction: column;
     justify-content: center;
-    padding: 1.1rem;
+    padding: 0.9rem;
     border: 1px solid #eee7f1;
     border-radius: 0.6rem;
     background: #fff;
@@ -833,12 +834,12 @@ html:not(.user-theme-active) .ocs__mgb-home {
   strong {
     color: #604184;
     font-family: 'Lora', Georgia, serif;
-    font-size: 1.2rem;
+    font-size: 1.08rem;
   }
 
   span {
     margin-top: 0.4rem;
-    color: #716779;
+    color: #51435f;
     font-size: 0.88rem;
     line-height: 1.5;
   }
@@ -846,7 +847,7 @@ html:not(.user-theme-active) .ocs__mgb-home {
 
 .ocs__mgb-about-sources {
   margin: 1rem 0 0;
-  color: #716779;
+  color: #51435f;
   font-size: 0.82rem;
   line-height: 1.6;
 

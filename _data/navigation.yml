@@ -20,8 +20,6 @@ resources:
     url: /resources/workshops/
 blog:
   - title: General blogs
-    url: https://www.mygoodbrain.org/blog
-    external: true
+    url: /blogs/general/
   - title: Teen blogs
-    url: https://www.mygoodbrain.org/blog/category/teen%20blog%20corner
-    external: true
+    url: /blogs/teens/
